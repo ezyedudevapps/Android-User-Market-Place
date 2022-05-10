@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:id="@+id/insti_relative"
+        android:layout_margin="15sp"
+        android:elevation="10dp"
+        android:layout_marginBottom="10sp"
+        android:background="@drawable/white_oval"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/institution_image"
+            android:layout_marginTop="15dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="TODO"
+
+            />
+
+        <TextView
+            android:id="@+id/learn_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/institution_image"
+            android:layout_marginStart="10sp"
+            android:text="learning centre"
+            android:maxLines="1"
+            android:textColor="@color/orange_500" />
+        <TextView
+            android:id="@+id/insitute_tittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/learn_type"
+            android:layout_marginStart="10sp"
+            android:text="EZY-EDU"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:id="@+id/location_institute"
+            android:layout_width="wrap_content"
+            android:layout_height="20sp"
+            android:layout_below="@id/insitute_tittle"
+            android:layout_marginStart="10sp"
+            android:text="indonesia"
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/rating_relative"
+            android:layout_width="40dp"
+            android:layout_height="22dp"
+            android:layout_below="@+id/location_institute"
+            android:background="@color/green"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:id="@+id/rating_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4 *"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/rating_relative"
+                tools:ignore="NotSibling" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tot_reviews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ratings"
+            android:layout_toRightOf="@id/rating_relative"
+            android:layout_below="@+id/location_institute"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:textSize="15sp"
+            tools:ignore="NotSibling" />
+    </RelativeLayout>
+
+</RelativeLayout>

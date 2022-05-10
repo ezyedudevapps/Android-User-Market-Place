@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Others_Activity">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@drawable/img_sign_background"
+    >
+    <TextView
+        android:id="@+id/welcm_name"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:text="Welcome Guest"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="25dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:textSize="20sp"/>
+
+</RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/img_frame"
+        android:layout_width="130sp"
+        android:layout_height="130sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/circle_background"
+        android:elevation="10dp"
+        android:layout_alignParentEnd="true"
+        android:padding="20dp">
+        <!--Circular Image View-->
+        <ImageView
+            android:id="@+id/img_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/ic_miss_livia" />
+    </FrameLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?selectableItemBackground"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        android:layout_below="@id/img_frame"
+        tools:ignore="RtlHardcoded"
+        >
+
+        <LinearLayout
+            android:layout_width="391dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/space">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space"
+                android:layout_weight="0.9"
+                android:text="Languages"
+                android:textColor="@color/black"
+                android:textSize="8pt"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                app:srcCompat="@drawable/ic_chevron_right_grey_24dp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_myaccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?selectableItemBackground"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        android:layout_below="@id/card_language"
+        tools:ignore="RtlHardcoded"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="391dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/space">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space"
+                android:layout_weight="0.9"
+                android:text="My Account"
+                android:textColor="@color/black"
+                android:textSize="8pt"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                app:srcCompat="@drawable/ic_chevron_right_grey_24dp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_bookmarks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_myaccount"
+        android:foreground="?selectableItemBackground"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        tools:ignore="RtlHardcoded"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="391dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/space">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space"
+                android:layout_weight="0.9"
+                android:text="Bookmarks"
+                android:textColor="@color/black"
+                android:textSize="8pt"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                app:srcCompat="@drawable/ic_chevron_right_grey_24dp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_bankacccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?selectableItemBackground"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        android:layout_below="@id/card_bookmarks"
+        tools:ignore="RtlHardcoded"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="391dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/space">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space"
+                android:layout_weight="0.9"
+                android:text="Bank Account"
+                android:textColor="@color/black"
+                android:textSize="8pt"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                app:srcCompat="@drawable/ic_chevron_right_grey_24dp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_History"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?selectableItemBackground"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        android:layout_below="@id/card_bankacccount"
+        tools:ignore="RtlHardcoded"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="391dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/space">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space"
+                android:layout_weight="0.9"
+                android:text="History"
+                android:textColor="@color/black"
+                android:textSize="8pt"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                app:srcCompat="@drawable/ic_chevron_right_grey_24dp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_referrals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?selectableItemBackground"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        android:layout_below="@id/card_History"
+        tools:ignore="RtlHardcoded"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="391dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/space">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space"
+                android:layout_weight="0.9"
+                android:text="Referrals"
+                android:textColor="@color/black"
+                android:textSize="8pt"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                app:srcCompat="@drawable/ic_chevron_right_grey_24dp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?selectableItemBackground"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        android:layout_below="@id/card_referrals"
+        tools:ignore="RtlHardcoded"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="391dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/space">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space"
+                android:layout_weight="0.9"
+                android:text="Settings"
+                android:textColor="@color/black"
+                android:textSize="8pt"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                app:srcCompat="@drawable/ic_chevron_right_grey_24dp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_Logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?selectableItemBackground"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        android:layout_below="@id/card_settings"
+        tools:ignore="RtlHardcoded"
+        android:visibility="gone"
+        >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space"
+                android:layout_weight="0.9"
+                android:text="Logout"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="8pt"
+                android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+
+
+    <Button
+        android:id="@+id/login_sign_up"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Log In/Sign Up"
+        android:layout_below="@id/card_language"
+        android:background="@drawable/background_orange_extraround"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        />
+
+
+
+    <RelativeLayout
+        android:id="@+id/rel_1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="15sp"
+        android:layout_alignParentBottom="true"
+        >
+
+        <TextView
+            android:id="@+id/home_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Home"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+        <ImageView
+            android:id="@+id/home_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home"
+            android:layout_above="@id/home_txt"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rel_cen"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        >
+
+        <TextView
+            android:id="@+id/explore_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explore"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            />
+
+        <ImageView
+            android:id="@+id/exp_btn"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/explore_txt"
+            android:layout_marginStart="11sp"
+            android:src="@drawable/ic_explore" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rel_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_toEndOf="@id/rel_1"
+        android:layout_marginStart="5sp"
+        >
+
+        <TextView
+            android:id="@+id/ms_livia_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ms Livia"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            />
+
+        <ImageView
+            android:id="@+id/chat_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ms_livia_text"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/ic_ms_livia" />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/rel_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_toEndOf="@+id/rel_cen"
+        android:layout_marginStart="5sp"
+        >
+
+        <TextView
+            android:id="@+id/Cart_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cart"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            />
+        <ImageView
+            android:id="@+id/cart_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_cart"
+            android:layout_marginStart="16dp"
+            android:layout_above="@id/Cart_text"/>
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/rel_oth"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="35sp"
+        android:layout_alignParentEnd="true"
+        >
+
+        <TextView
+            android:id="@+id/Others_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Others"
+            android:layout_alignParentBottom="true"
+
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            />
+        <ImageView
+            android:id="@+id/others_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_others"
+
+            android:layout_above="@id/Others_text"/>
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+</RelativeLayout>

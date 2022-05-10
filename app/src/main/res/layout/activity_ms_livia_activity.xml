@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ms_livia_activity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:background="@drawable/background_toolbar_round"
+        >
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="We'll help you find the best"
+            android:textSize="42sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="35dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/img_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/circle_background"
+        android:elevation="10dp"
+        android:layout_alignParentEnd="true"
+        android:padding="20dp">
+        <!--Circular Image View-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_miss_livia" />
+    </FrameLayout>
+
+<de.hdodenhof.circleimageview.CircleImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/pic1"
+    android:src="@drawable/ic_ms_livia_point_1"
+    android:layout_below="@id/img_frame"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="20dp"
+    />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="We Compile the best education program you need in one app"
+        android:layout_below="@id/img_frame"
+        android:layout_marginTop="33dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginStart="110dp"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pic2"
+        android:src="@drawable/ic_ms_livia_point_2"
+        android:layout_below="@id/pic1"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="We help you to decide the best educational program for you by chatting with us"
+        android:layout_below="@id/pic1"
+        android:layout_marginTop="29dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginStart="110dp"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_ms_livia_point_3"
+        android:layout_below="@id/pic2"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Give your educational the best experience"
+        android:layout_below="@id/pic2"
+        android:layout_marginTop="29dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/txt3"
+        android:layout_marginStart="110dp"/>
+
+
+    <Button
+        android:id="@+id/chatwithmislivia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_double"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="@dimen/space_double"
+        android:background="@drawable/background_orange_extraround"
+        android:elevation="10dp"
+       android:layout_below="@id/txt3"
+        android:text="Start Chatting With Ms. Livia Now"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_large" />
+
+
+
+    <RelativeLayout
+        android:id="@+id/rel_1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="15sp"
+        android:layout_alignParentBottom="true"
+        >
+
+        <TextView
+            android:id="@+id/home_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Home"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+        <ImageView
+            android:id="@+id/home_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home"
+            android:layout_above="@id/home_txt"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rel_cen"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        >
+
+        <TextView
+            android:id="@+id/explore_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explore"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            />
+
+        <ImageView
+            android:id="@+id/exp_btn"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/explore_txt"
+            android:layout_marginStart="11sp"
+            android:src="@drawable/ic_explore" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rel_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_toEndOf="@id/rel_1"
+        android:layout_marginStart="5sp"
+        >
+
+        <TextView
+            android:id="@+id/ms_livia_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ms Livia"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            />
+
+        <ImageView
+            android:id="@+id/chat_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ms_livia_text"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/ic_ms_livia" />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/rel_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_toEndOf="@+id/rel_cen"
+        android:layout_marginStart="5sp"
+        >
+
+        <TextView
+            android:id="@+id/Cart_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cart"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            />
+        <ImageView
+            android:id="@+id/cart_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_cart"
+            android:layout_marginStart="16dp"
+            android:layout_above="@id/Cart_text"/>
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/rel_oth"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="35sp"
+        android:layout_alignParentEnd="true"
+        >
+
+        <TextView
+            android:id="@+id/Others_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Others"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            />
+        <ImageView
+            android:id="@+id/others_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_others"
+            android:layout_above="@id/Others_text"/>
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

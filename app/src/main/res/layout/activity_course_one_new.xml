@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Course_one_new">
+
+
+    <RelativeLayout
+        android:id="@+id/rel_11"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/ezy"
+        >
+        <ImageView
+            android:id="@+id/sc_back"
+            android:layout_width="30dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="7sp"
+            android:src="@drawable/ic_left_arrow_white"
+            />
+
+        <ImageView
+            android:id="@+id/cart_img"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_cart_white"
+            />
+        <ImageView
+            android:id="@+id/share_img"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_share_white"
+            android:layout_toLeftOf="@+id/cart_img"
+            android:layout_centerVertical="true"
+            />
+        <ImageView
+            android:id="@+id/bookmark_img"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_toLeftOf="@+id/share_img"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_bookmark_white"
+            />
+        <ImageView
+            android:id="@+id/chat_sep"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/bookmark_img"
+            android:src="@drawable/ic_vendor_chat"
+            />
+
+    </RelativeLayout>
+
+
+
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/rel_11"
+        tools:ignore="UselessParent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+
+
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/slider_view"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:sliderScrollTimeInSec="3"
+                app:sliderStartAutoCycle="true"
+                android:layout_marginTop="15sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10sp"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderIndicatorPadding="4dp"
+                app:sliderIndicatorRadius="1.5dp"
+                app:sliderIndicatorSelectedColor="@color/ezy"
+                app:sliderIndicatorUnselectedColor="@color/black"
+                app:sliderAnimationDuration="1000"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                tools:ignore="UnknownId" />
+
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyc_sep_cours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:orientation="vertical"
+                android:layout_marginBottom="15sp"
+                android:layout_below="@id/slider_view"
+                android:layout_marginTop="20sp"
+                />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    >
+
+    <Button
+        android:id="@+id/add_to_cart_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="ADD To cart"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:layout_weight="1"
+        android:textStyle="italic"
+        tools:ignore="Suspicious0dp" />
+    <Button
+        android:id="@+id/buy_now_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="BUY NOW"
+        android:layout_weight="1"
+        android:background="@color/orange"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+
+
+
+
+</LinearLayout>
+
+
+
+
+</RelativeLayout>

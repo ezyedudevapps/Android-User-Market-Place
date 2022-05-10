@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:elevation="15dp"
+        android:backgroundTint="#F99E23"
+        app:cardCornerRadius="50dp"
+        android:id="@+id/card_scroll"
+        android:layout_margin="15sp"
+        >
+        <RelativeLayout
+            android:layout_width="190dp"
+            android:layout_marginStart="5dp"
+            android:layout_height="150dp"
+            >
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:id="@+id/txt_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold|italic"
+                android:textSize="18sp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/white"
+                />
+            <TextView
+                android:layout_below="@id/txt_head"
+                android:id="@+id/txt1"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:layout_below="@id/txt1"
+                android:id="@+id/txt2"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:id="@+id/txt3"
+                android:layout_below="@id/txt2"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="223dp"
+            android:layout_height="150dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="90dp"
+            android:id="@+id/img1"
+            android:layout_height="90dp"
+            android:scaleType="centerCrop"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="195dp"
+            android:src="@drawable/ic_personality_test"
+            />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

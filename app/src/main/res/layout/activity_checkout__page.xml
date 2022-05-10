@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Checkout_Page">
+
+<RelativeLayout
+    android:id="@+id/checkout_heading"
+    android:layout_width="match_parent"
+    android:layout_height="80sp"
+    android:background="@color/orange"
+>
+    <ImageView
+        android:id="@+id/left_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="23sp"
+        android:src="@drawable/ic_left_arrow_white"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:text="Checkout"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_toRightOf="@id/left_arrow"
+        android:layout_margin="20sp"
+        />
+</RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/Total_payment_relative"
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:layout_margin="15sp"
+        android:layout_below="@+id/checkout_heading"
+        android:background="@drawable/white_oval"
+        android:elevation="10sp"
+        >
+        <TextView
+            android:id="@+id/Total_amt_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Payment"
+            android:layout_margin="15sp"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            />
+        <TextView
+            android:id="@+id/tot_amt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Total_amt_txt"
+            android:layout_marginStart="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/orange"
+            android:textSize="22sp"
+            />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/paymnt_mthd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Payment Method"
+        android:layout_below="@+id/Total_payment_relative"
+        android:layout_marginStart="10dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        />
+
+
+
+    <RadioGroup
+        android:id="@+id/radio_pay_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/paymnt_mthd"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        >
+        <RadioButton
+            android:id="@+id/fuul_py_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Payment"
+            android:onClick="checkButton"
+            />
+        <RadioButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Installment"
+            android:onClick="checkButton"
+            />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EMI month"
+        android:id="@+id/emi_plan"
+        android:layout_below="@+id/radio_pay_mode"
+        android:padding="8dp"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:visibility="gone"
+        />
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/card_Details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emi_plan"
+        android:text="Credit Card Details"
+        android:layout_marginStart="10sp"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+/>
+<TextView
+    android:id="@+id/full_nm"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/card_Details"
+    android:text="Full Name"
+    android:layout_marginStart="15sp"
+    android:layout_marginTop="15sp"
+    android:textStyle="italic"
+    android:textSize="18sp"
+/>
+    <EditText
+        android:id="@+id/get_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/full_nm"
+        android:background="@drawable/white_oval"
+        android:elevation="5sp"
+        android:hint="Name Here"
+        android:textAlignment="center"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="10sp"
+        android:padding="6dp"
+        android:singleLine="true"
+        />
+    <TextView
+        android:id="@+id/full_numberr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/get_name"
+        android:text="Card Number"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="15sp"
+        android:textStyle="italic"
+        android:textSize="18sp"
+
+        />
+    <EditText
+        android:id="@+id/get_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/full_numberr"
+        android:background="@drawable/white_oval"
+        android:elevation="5sp"
+        android:hint="Number Here"
+        android:textAlignment="center"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="10sp"
+        android:padding="6dp"
+        android:inputType="number"
+        android:singleLine="true"
+        />
+
+    <TextView
+        android:id="@+id/expired"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/get_number"
+        android:text="expirey Month"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="15sp"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        />
+    <Spinner
+        android:id="@+id/get_exp_mm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expired"
+android:layout_marginStart="25sp"
+        android:layout_marginTop="15sp"
+        />
+    <TextView
+        android:id="@+id/expire_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/get_number"
+        android:text="expirey Year"
+      android:layout_centerHorizontal="true"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="15sp"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        />
+    <EditText
+        android:id="@+id/get_exp_yy"
+        android:layout_width="90sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expired"
+        android:background="@drawable/white_oval"
+        android:elevation="5sp"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="10sp"
+        android:layout_centerHorizontal="true"
+        android:padding="6dp"
+        android:textAlignment="center"
+        android:hint="YY"
+        android:singleLine="true"
+        android:inputType="number"
+        />
+    <TextView
+        android:id="@+id/cvs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/get_number"
+        android:text="CVS Code"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="15sp"
+        android:textStyle="italic"
+        android:layout_alignParentEnd="true"
+        android:textSize="18sp"
+        android:layout_marginEnd="20sp"
+        />
+    <EditText
+        android:id="@+id/get_cvs"
+        android:layout_width="90sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expired"
+        android:background="@drawable/white_oval"
+        android:elevation="5sp"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="15sp"
+        android:padding="6dp"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center"
+        android:hint="***"
+        android:inputType="numberPassword"
+        android:singleLine="true"
+        />
+
+
+    <TextView
+        android:id="@+id/pay_now_btn"
+        android:layout_width="190sp"
+        android:layout_height="wrap_content"
+        android:text="submit"
+        android:layout_marginTop="40sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/get_exp_yy"
+        android:background="@color/orange"
+        android:textAlignment="center"
+        android:padding="5dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+/>
+
+</RelativeLayout>

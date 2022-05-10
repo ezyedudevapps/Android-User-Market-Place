@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ezyedu.student">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Design.Light.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Access_User_Location"></activity>
+        <activity android:name=".Change_Password" />
+        <activity android:name=".Settings_Activity" />
+        <activity android:name=".Terms_Conditions_Activity" />
+        <activity android:name=".Privacy_policy_activity" />
+        <activity android:name=".facebook_Register" />
+        <activity android:name=".Seperate_Feeds_Activity" />
+        <activity android:name=".Reset_Password" />
+        <activity android:name=".Forget_Password" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/key" />
+
+        <activity android:name=".MapActivity" />
+        <activity android:name=".NearMe_Activity" />
+        <activity android:name=".Bookmarks_Activity" />
+        <activity android:name=".Institution_Groups" />
+        <activity android:name=".OrderInfo_Page" />
+        <activity android:name=".History_Page" />
+        <activity android:name=".Payment_Response" />
+        <activity android:name=".Payment_webPage" />
+        <activity android:name=".Checkout_Page" />
+        <activity android:name=".Update_profile_activity" />
+        <activity android:name=".My_profile_Activity" />
+        <activity android:name=".Chat_List_Activity" />
+        <activity android:name=".Chat_Activity" />
+        <activity android:name=".CourseActivity" />
+        <activity android:name=".RegisterActivateActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".Login_Activity" />
+        <activity android:name=".Login_signup_page" />
+        <activity android:name=".Article_details_activity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".SeperateInstitution" />
+        <activity android:name=".SeperatePromotion" />
+        <activity android:name=".InstitutionActivity" />
+        <activity android:name=".Course_one_new" />
+        <activity android:name=".Explore_Activity" />
+        <activity android:name=".Others_Activity" />
+        <activity android:name=".Cart_Activity" />
+        <activity android:name=".ms_livia_activity" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="prod-api.ezy-edu.com"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="prod-api.ezy-edu.com"
+                    android:scheme="http" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="prod-api.ezy-edu.com"
+                    android:scheme="app" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/relative_promotion"
+        android:layout_width="392dp"
+        android:layout_height="153dp"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="10sp"
+        android:layout_marginBottom="10sp"
+        android:background="@drawable/white_oval"
+        android:elevation="15sp">
+
+        <ImageView
+            android:id="@+id/img_promo_fragment"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10sp" />
+
+        <TextView
+            android:id="@+id/tittle_promo_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15sp"
+            android:layout_marginEnd="15sp"
+            android:layout_toRightOf="@id/img_promo_fragment"
+            android:text="ezy-edu"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/days_left_promo_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/img_promo_fragment"
+            android:layout_above="@id/tittle_promo_fragment"
+            android:layout_marginBottom="3sp"
+            android:text="5 days to go"
+            android:layout_marginStart="15sp"
+            android:textColor="@color/orange_500"
+/>
+
+
+        <Button
+            android:id="@+id/button_promo_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="see Details"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/white"
+            android:layout_marginEnd="10dp"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+/>
+
+
+    </RelativeLayout>
+</RelativeLayout>

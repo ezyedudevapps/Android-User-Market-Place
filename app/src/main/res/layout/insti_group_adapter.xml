@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/group_relative"
+        android:layout_width="190sp"
+        android:layout_margin="10sp"
+        android:elevation="4dp"
+        android:background="@drawable/white_oval"
+        android:layout_height="140sp"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="match_parent"
+            android:layout_height="90sp"
+            android:id="@+id/insti_grp_img"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10sp"
+            />
+        <TextView
+            android:id="@+id/ven_group_name"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="Bagus Institute"
+            android:textAlignment="center"
+            android:layout_marginStart="10sp"
+            android:textColor="@color/black"
+            android:layout_below="@+id/insti_grp_img"
+            android:textStyle="bold"
+        />
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

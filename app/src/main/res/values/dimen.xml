@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+
+    <!--HEIGHT-->
+    <!--<dimen name="medium_height">48dp</dimen>-->
+
+    <!--FONT SIZE-->
+    <dimen name="normal_font_size">14dp</dimen>
+    <dimen name="normal_medium_font_size">16dp</dimen>
+    <dimen name="medium_font_size">18dp</dimen>
+
+    <!--PADDING & MARGIN-->
+    <dimen name="padding_margin_thin">4dp</dimen>
+    <dimen name="padding_margin_normal_thin">8dp</dimen>
+    <dimen name="padding_margin_normal">16dp</dimen>
+    <dimen name="padding_margin_super_thick">72dp</dimen>
+    <!--EDIT PROFILE-->
+    <!--BOOKING DETAIL-->
+
+    <!--FORGOT PASSWORD-->
+
+
+    <!-- ================== ANOTHER DIMENSIONS PLATE ================== -->
+
+    <!-- font sizes -->
+    <dimen name="font_xxxlarger">32sp</dimen>
+    <dimen name="font_xxlarger">28sp</dimen>
+    <dimen name="font_xlarger">24sp</dimen>
+    <dimen name="font_larger">20sp</dimen>
+    <dimen name="font_large">18sp</dimen>
+    <dimen name="font_medium">16sp</dimen>
+    <dimen name="font_normal">14sp</dimen>
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_tiny">10sp</dimen>
+
+    <!-- typical spacing between two views -->
+
+    <!-- typical sizes of views -->
+    <dimen name="button_height_tall">60dp</dimen>
+    <dimen name="button_height_normal">40dp</dimen>
+    <dimen name="button_height_short">32dp</dimen>
+    <dimen name="button_height_vshort">25dp</dimen>
+
+    <!--MARGIN & PADDING-->
+    <dimen name="space_quarter">2dp</dimen>
+    <dimen name="space_half">4dp</dimen>
+    <dimen name="space_half_minus">-4dp</dimen>
+    <dimen name="space">8dp</dimen>
+    <dimen name="space_minus">-8dp</dimen>
+    <dimen name="space_minus_double">-16dp</dimen>
+    <dimen name="space_minus_triple">-24dp</dimen>
+    <dimen name="space_minus_qtriple">-32dp</dimen>
+    <dimen name="space_double">16dp</dimen>
+    <dimen name="space_double_minus">-16dp</dimen>
+    <dimen name="space_qtriple">20dp</dimen>
+    <dimen name="space_triple">24dp</dimen>
+    <dimen name="space_quadruple">32dp</dimen>
+    <dimen name="space_xtra_half">40dp</dimen>
+    <dimen name="space_xtra">48dp</dimen>
+    <dimen name="space_xxtra">72dp</dimen>
+    <dimen name="space_xxxtra">96dp</dimen>
+
+    <!--RADIUS-->
+
+    <!--Width Image-->
+    <dimen name="extra_large_width">160dp</dimen>
+
+    <!--Height Image-->
+    <dimen name="super_large_height">250dp</dimen>
+
+    <!--ICON-->
+    <dimen name="icon_normal">25dp</dimen>
+
+    <!--Card View-->
+
+    <!--RADIUS-->
+    <dimen name="default_cardview_radius">14dp</dimen>
+    <dimen name="ideaschild_cardview_radius">10dp</dimen>
+    <dimen name="default_header_round_radius">36dp</dimen>
+    <dimen name="default_header_top_offset">-44dp</dimen>
+    <dimen name="edit_profile_header_top_offset">-36dp</dimen>
+    <dimen name="normal_header_height">230dp</dimen>
+
+
+</resources>

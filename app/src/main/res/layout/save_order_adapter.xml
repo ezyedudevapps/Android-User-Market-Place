@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5sp"
+        android:layout_marginTop="5sp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="15sp"
+        android:background="@drawable/white_oval">
+
+        <TextView
+            android:id="@+id/order_ref_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15sp"
+            android:layout_marginTop="10sp"
+            android:text="Order Ref id"
+            android:textSize="13sp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/ven_nm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/order_ref_num"
+            android:layout_marginStart="15sp"
+            android:textSize="13sp"
+            android:layout_marginTop="10sp"
+            android:text="Vendor Name "
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/Amt_course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ven_nm"
+            android:layout_marginStart="15sp"
+            android:layout_marginTop="10sp"
+            android:text="Amount"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:textColor="@color/orange" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/straight_line"
+            android:layout_below="@+id/Amt_course"
+            android:layout_marginTop="-5dp"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

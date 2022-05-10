@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Payment_Response">
+
+
+    <TextView
+        android:id="@+id/txt_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="@color/orange"
+        android:text="Payment and Orders"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        />
+
+
+    <ImageView
+        android:id="@+id/payment_icon"
+        android:layout_width="match_parent"
+        android:layout_height="170sp"
+        android:src="@drawable/payment_loading_icon"
+        android:layout_below="@id/txt_pay"
+        android:layout_margin="15sp"
+        />
+    <RelativeLayout
+        android:id="@+id/Transaction_relative"
+        android:layout_width="match_parent"
+        android:layout_height="130sp"
+        android:layout_below="@id/payment_icon"
+        android:layout_margin="15sp"
+        android:elevation="5dp"
+        android:background="@drawable/white_oval"
+        >
+        <TextView
+            android:id="@+id/Payment_Response"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10sp"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/straight_line"
+            android:layout_below="@id/Payment_Response"
+            android:layout_marginTop="-10sp"
+            />
+        <TextView
+            android:id="@+id/amt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Payment_Response"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
+            android:layout_marginTop="10sp"
+            android:text=""
+            android:textAlignment="center"
+            />
+        <TextView
+            android:id="@+id/Transaction_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/amt"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
+            android:layout_marginTop="5sp"
+            android:text=""
+            android:textAlignment="center"
+            />
+        <TextView
+            android:id="@+id/ref_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Transaction_id"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
+            android:layout_marginTop="5sp"
+            android:text=""
+            android:textAlignment="center"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/order_dtl_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Order Details"
+        android:layout_below="@+id/Transaction_relative"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:background="@color/white"
+        android:padding="6dp"
+        android:visibility="gone"
+        />
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/order_recycler"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/order_dtl_txt"
+    android:layout_above="@+id/order_page_btn"
+    android:layout_marginBottom="10sp"
+    android:layout_marginTop="5sp"
+    />
+    <TextView
+        android:id="@+id/order_page_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/orange"
+        android:text="View Order Details"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="19sp"
+        android:padding="6sp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>

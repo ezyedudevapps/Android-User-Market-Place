@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.SearchInstitution">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:background="@color/ezy"
+        >
+
+        <EditText
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_institution_edit"
+            android:hint="Search for Institutions"
+            android:visibility="visible"
+            android:textAlignment="center"
+            android:layout_marginStart="15sp"
+            android:layout_marginEnd="15sp"
+            android:background="@drawable/white_oval"
+            android:padding="5dp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_crse"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/i11"
+            android:layout_width="190sp"
+            android:visibility="visible"
+            android:layout_height="190sp"
+            android:src="@drawable/empty_history"
+            android:layout_marginTop="50sp"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/t11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Institutions Found"
+            android:visibility="visible"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10sp"
+            android:layout_gravity="center_horizontal"
+            />
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56sp"
+        android:id="@+id/search_institute_recycler"
+        />
+
+</FrameLayout>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/img_sign_background"
+    android:layout_height="match_parent"
+    tools:context=".Update_profile_activity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="220sp"
+        android:id="@+id/my_txt"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Profile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="7sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            />
+        <ImageView
+            android:id="@+id/left_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_marginStart="10sp"
+            android:src="@drawable/ic_left_arrow_white"
+            />
+        <ImageView
+            android:id="@+id/cart_btt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_cart_white"
+            android:layout_marginEnd="15sp"
+            android:visibility="gone"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/cart_btt"
+            android:layout_marginTop="5sp"
+            android:src="@drawable/ic_vendor_chat"
+            android:layout_marginEnd="15sp"
+            android:visibility="gone"
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/img_up1"
+            android:layout_width="110sp"
+            android:layout_height="110sp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_to_update"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/spf"
+                android:background="@color/white"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/change_photo_btn"
+                android:layout_width="45dp"
+                android:layout_height="55dp"
+                android:layout_marginBottom="-10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_horizontal"
+                android:padding="4dip"
+                android:src="@drawable/gpk" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/my_txt"
+        >
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="USERNAME"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            />
+
+    <EditText
+        android:id="@+id/name_to_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+        <TextView
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DATE OF BIRTH"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            />
+
+        <EditText
+            android:id="@+id/dob_to_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_to_update"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:backgroundTint="@color/white" />
+
+        <TextView
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GENDER"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            />
+        <RadioGroup
+            android:id="@+id/radio_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10sp"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/yes_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="male"
+                android:onClick="checkButton"
+                />
+            <RadioButton
+                android:id="@+id/no_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="female"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginStart="10sp"
+                android:onClick="checkButton"
+                />
+            <RadioButton
+                android:id="@+id/nos_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="others"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginStart="10sp"
+                android:onClick="checkButton"
+                />
+        </RadioGroup>
+        <TextView
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PHONE"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            />
+    <EditText
+        android:id="@+id/phone_to_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gender_to_update"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
+        android:backgroundTint="@color/white"
+        android:inputType="number"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/update_progile_btn"
+        android:layout_width="140sp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:padding="10sp"
+        android:elevation="3dp"
+        android:background="@drawable/white_new_oval"
+        android:layout_marginTop="15sp"
+        android:layout_gravity="center"
+        android:textColor="@color/nevy"
+        android:text="UPDATE"
+        />
+    </LinearLayout>
+</RelativeLayout>

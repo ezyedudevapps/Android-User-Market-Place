@@ -1,0 +1,411 @@
+<resources>
+    <string name="app_name">EzyEdu</string>
+    <string name="title_home">Home</string>
+    <string name="title_notification">Notification</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_mslivia">Ms. livia</string>
+
+    <string-array name="Exp_month">
+        <item>01-Jan</item>
+        <item>02-Feb</item>
+        <item>03-Mar</item>
+        <item>04-Apr</item>
+        <item>05-May</item>
+        <item>06-Jun</item>
+        <item>07-Jul</item>
+        <item>08-Aug</item>
+        <item>09-Sep</item>
+        <item>10-Oct</item>
+        <item>11-Nov</item>
+        <item>12-Dec</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="use">Use</string>
+    <string name="articles">Articles</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="retry">Retry</string>
+    <string name="refresh">Refresh</string>
+    <string name="coupon">Coupon</string>
+    <string name="success">Success</string>
+    <string name="hello_blank_fragment">" "</string>
+    <string name="event">Event</string>
+    <string name="events">Events</string>
+    <string name="promo">Promo</string>
+    <string name="idea">Idea</string>
+    <string name="ideas">Ideas</string>
+    <string name="key">AIzaSyA9fJtFSiRVjYtXEEpK9oUBe6LzER2Nlh4</string>
+    <string name="explore">Explore</string>
+    <string name="save_idea">Save Idea</string>
+    <string name="saved_ideas">Saved Ideas</string>
+    <string name="profile">Profile</string>
+    <string name="profile_picture">Profile picture</string>
+    <string name="error_msg_unknown">error</string>
+    <string name="view_vendor">View Host</string>
+    <string name="vendor">Institution</string>
+    <string name="vendors">Institutions</string>
+    <string name="my_inspirations">My Inspirations</string>
+    <string name="my_rewards">My Rewards</string>
+    <string name="my_favourites">My favourites</string>
+    <string name="saved_vendor">Saved Institution</string>
+    <string name="connected_vendor">Connected Institution</string>
+    <string name="points">Points</string>
+    <string name="rewards">Rewards</string>
+    <string name="available">Available</string>
+    <string name="redeem">Redeem</string>
+    <string name="loremipsum">" "</string>
+    <string name="seeall">See All</string>
+    <string name="transaction">Transaction</string>
+    <string name="pendingrequest">Pending Request</string>
+    <string name="requested">Requested</string>
+    <string name="approve">Approve</string>
+    <string name="awaiting_response">Awaiting Response</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+    <string name="history">History</string>
+    <string name="my_coupon">My Coupon</string>
+    <string name="invoice">Invoice</string>
+    <string name="amount">AMOUNT</string>
+    <string name="discount">Discount</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="datecreated_caps">DATE CREATED</string>
+    <string name="dateexpired_caps">DATE EXPIRED</string>
+    <string name="installment_caps">INSTALLMENT</string>
+    <string name="itemdescription_caps">ITEM DESCRIPTION</string>
+    <string name="issuedby_caps">ISSUED BY</string>
+    <string name="all">All</string>
+    <string name="near_me">Near Me</string>
+    <string name="explore_institutions">Explore Institution</string>
+    <string name="search">Search</string>
+    <string name="generic_searchbar_hint">Search Institutions, Ideas, Events, or Articles</string>
+    <string name="message">Message</string>
+    <string name="announcement">Announcement</string>
+    <string name="writeareview">Write a Review</string>
+    <string name="edit_review">Edit Review</string>
+    <string name="review">Review</string>
+    <string name="word_of_mouth">Word of Mouth</string>
+    <string name="reviewed">Reviewed</string>
+    <string name="reviews">Reviews</string>
+    <string name="dateheader">Date:</string>
+    <string name="timeheader">Time:</string>
+    <string name="locationheader">Location:</string>
+    <string name="hostheader">Host:</string>
+    <string name="currentpoint">Current Points</string>
+    <string name="blogpost">Article</string>
+    <string name="summary">Summary</string>
+    <string name="info">Info</string>
+    <string name="activity">ACTIVITY</string>
+    <string name="locationpromo">LOCATION PROMO</string>
+    <string name="notes">NOTES</string>
+    <string name="skip">Skip</string>
+    <string name="signin">Sign In</string>
+    <string name="signup">Sign Up</string>
+    <string name="typehere">Type here</string>
+    <string name="password">Password</string>
+    <string name="star">****</string>
+    <string name="submit">Submit</string>
+    <string name="send">Send</string>
+    <string name="post_comment">Post Comment</string>
+    <string name="post">Post</string>
+    <string name="forgotpasswordunderline"><u>Forgot Password?</u></string>
+    <string name="or">Or</string>
+    <string name="donthaveaccount">Don\'t have account? <b><u>Sign up</u></b></string>
+    <string name="pleasewait">Please Wait</string>
+    <string name="email">E-mail</string>
+    <string name="email_vendor">Email Institution</string>
+    <string name="username">Username</string>
+    <string name="confirmpass">Confirm Password</string>
+    <string name="bysignup"><![CDATA[By signing up you agree to our Terms & Conditions]]></string>
+    <string name="alreadyhaveaccount">Already have an account? Sign In</string>
+    <string name="youarein">YOU ARE IN !</string>
+    <string name="continues">Continue</string>
+    <string name="blog">Article</string>
+    <string name="blogs">Article</string>
+    <string name="taggedvendor">Tagged Institution</string>
+    <string name="seemorecomments">See more comments</string>
+    <string name="comments">Comments</string>
+    <string name="write_your_comment_here">Write your comment here</string>
+    <string name="write_your_review_here">Write your review here...</string>
+    <string name="load_more">Load More</string>
+    <string name="filter">Filter</string>
+    <string name="apply">Apply</string>
+    <string name="sortby">Sort By</string>
+    <string name="expired">Expired</string>
+    <string name="category">Category</string>
+    <string name="distance">Distance</string>
+    <string name="current_location">Current location</string>
+    <string name="price_range">Budget</string>
+    <string name="province">Province</string>
+    <string name="city">City</string>
+    <string name="district">District</string>
+    <string name="cancel">Cancel</string>
+    <string name="canceled">Canceled</string>
+    <string name="facilities">Facilities</string>
+    <string name="facility">Facility</string>
+    <string name="typesomething">Type something&#8230;</string>
+    <string name="rate">Rate</string>current_location
+    <string name="max_distance">Max distance</string>
+    <string name="connected">Connected</string>
+    <string name="connect">Connect</string>
+    <string name="messages">Messages</string>
+    <string name="done">Done</string>
+    <string name="close">Close</string>
+    <string name="compare">Compare</string>
+    <string name="compare_institution">Compare Institution</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="share">Share</string>
+    <string name="continue_text">Continue</string>
+    <string name="start">Start</string>
+    <string name="logging_out">Logging out</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="read">Read</string>
+    <string name="video">Video</string>
+    <string name="send_support_email_using">Send support email using&#8234;</string>
+
+    <!--NOTIFICATION CHANNEL TITLE-->
+    <string name="chat_message">Chat Message</string>
+    <string name="generic_info">General Info</string>
+    <string name="payment_info">Payment Info</string>
+
+    <string name="generic_no_item_list">No data here</string>
+
+    <string name="review_successfully_posted">Review successfully posted</string>
+
+    <string name="sign_up_socmed_type">Sign up with: %1$s</string>
+    <string name="continue_registration">Continue Registration</string>
+    <string name="signing_agreement">By signing up you agree to our %1$s and %2$s.</string>
+    <string name="already_have_account_quest"><![CDATA[Already have an account? <b><u>Sign In</u></b>]]></string>
+    <string name="resend_verification_email">Resend verification e-mail</string>
+    <string name="resend_verification_email_success_info">Success! Please check your e-mail and input the code here.</string>
+
+    <string name="plus_n">+%1$d</string>
+
+    <!--INTRO-->
+    <string name="intro_1_title">Discover Your Ideal Education Institution</string>
+    <string name="intro_1_message">Find, compare &amp; choose education vendors according to your needs.</string>
+    <string name="intro_2_title">Acquire Great Ideas</string>
+    <string name="intro_2_message">Get inspired with unlimited ideas posts.</string>
+    <string name="intro_3_title">Ms. Livia, Your Personal Education Consultant</string>
+    <string name="intro_3_message">Get assistance for the best deals and recommendations.</string>
+    <string name="intro_4_title">Stay Updated With Location Promos</string>
+    <string name="intro_4_message">Be aware of the latest deals &amp; offers.</string>
+    <string name="intro_5_title">EZY Inquiry for All Education Vendors</string>
+    <string name="intro_5_message">Communicate with education vendors effortlessly.</string>
+
+    <!--LANDING PAGE-->
+    <string name="landing_wellcome_message">Welcome to EzyEdu</string>
+
+    <!-- ERRORs -->
+    <string name="cannot_use_existing_account_on_this_app">Sorry, you can\'t use this account on EzyEdu app!</string>
+    <string name="get_location_info_exception_error">Can\'t get your location info! Please try again later.</string>
+    <string name="generic_exception_error">Please try again later.</string>
+    <string name="generic_exception_error_with_id">Please try again later (%1$d).</string>
+    <string name="error_connection">Unable to communicate with server. Please check your internet connection.</string>
+    <string name="error_user_banned">Your account was banned.</string>
+    <string name="error_unauthenticated">Your session was expired. Please login again.</string>
+    <string name="error_need_fill_all_form">Please fill all form.</string>
+    <string name="error_username_empty">Username needed!</string>
+    <string name="error_username_contain_space">Username should not contain space!</string>
+    <string name="error_email_format_not_valid">E-mail must be in e-mail format!</string>
+    <string name="error_password_length_not_valid">Password should be at least 6 characters long!</string>
+    <string name="error_email_empty">Please insert your e-mail!</string>
+    <string name="error_new_password_does_not_match">New password does not match</string>
+    <string name="error_occured_try_again_later">Error occurred, please try again later</string>
+    <string name="oops">Oops!</string>
+    <string name="error_verification_code_must_be_filled">Verification code can\'t be empty!</string>
+    <string name="gps_network_not_enabled">In order to use full feature of the app you need to turn on your location settings.</string>
+    <string name="open_location_settings">Open lcoation settings</string>
+    <string name="failed_to_process_sign_in_try_again">Failed to process the sign in. Please try again later.</string>
+    <string name="error_load_vendor_data">Error occurred while loading institution data.</string>
+
+    <!--GENERIC_DIALOG-->
+    <string name="generic_dialog_positive_button">OK</string>
+    <string name="generic_dialog_negative_button">Cancel</string>
+
+    <string name="written_by_format">%1$s</string>
+    <string name="vendor_s_reply">Institution\'s reply</string>
+
+
+    <!--SETTINGS STRING-->
+    <string name="account_settings">Account Settings</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="language">Language</string>
+    <string name="other">Other</string>
+    <string name="feedback_n_support">Feedback &amp; Support</string>
+    <string name="tnc">Terms and Conditions</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="appver_format">AppVer: %1$s</string>
+    <string name="logout">Log Out</string>
+    <string name="logout_confirmation">Are you sure you want to logout?</string>
+    <string name="are_you_sure_quest">Are you sure?</string>
+    <string name="this_action_cant_be_undone">This action can\'t be undone!</string>
+    <string name="change_language_confirmation">In order to take the effect, the app must be restarted. Proceed?</string>
+
+    <!--FORGOT PASSWORD-->
+    <string name="checking_email">Checking e-mail</string>
+    <string name="input_your_email_first_below">Input your e-mail below first</string>
+    <string name="enter_your_email">Enter your e-mail</string>
+    <string name="reset_password_info">Please check your e-mail, we\'ve sent you a code to reset your password.</string>
+    <string name="verification_code">Verification Code</string>
+
+    <!--CHANGE PASSWORD-->
+    <string name="current_password">Current password</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="error_password_empty">Password musn\'t be empty</string>
+    <string name="error_code_empty">Code musn\'t be empty</string>
+    <string name="password_successfully_changed">Password successfully changed</string>
+
+    <string name="verify_account">Verify Account</string>
+    <string name="verify_account_info">Check e-mail to verify your account\nInput the code below</string>
+    <string name="verify_success_info">Happy learning! Please login first.</string>
+
+    <!--USER PROFILE Related-->
+    <string name="username_format">\@%1$s</string>
+    <string name="change_picture">Change Picture</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="take_a_photo">Take a Photo</string>
+    <string name="use_existing_photo">Use Existing Photo</string>
+    <string name="username_field_must_be_filled">Username must be filled!</string>
+    <string name="fullname_field_must_be_filled">Fullname must be filled!</string>
+    <string name="phone_field_must_be_filled">Phone must be filled!</string>
+    <string name="success_save_data">Data successfully saved!</string>
+
+    <string name="change_email_question">Change E-mail?</string>
+    <string name="change_email_confirmation_message">You need to verify your new e-mail immediately after you\'ve inputted your new e-mail!</string>
+    <string name="enter_your_new_email">Enter your new e-mail</string>
+
+    <string name="changing_your_email">Changing your e-mail</string>
+
+    <string name="input_verification_code">Input verification code</string>
+    <string name="change_email_input_verification_code_message">Please check your e-mail now, and input given code here.</string>
+    <string name="enter_verification_code">Enter verification code</string>
+    <string name="email_successfully_changed">E-mail successfully changed!</string>
+
+    <string name="n_branches">%1$d branches</string>
+    <string name="n_review">%1$d review(s)</string>
+    <string name="n_rating">%1$d rating(s)</string>
+
+    <string name="select_institution_to_compare">Select Institution to Compare</string>
+    <string name="choose_vendor">Choose Institution</string>
+    <string name="vendor_share_format" translatable="false">%1$s - EzyEdu | %2$sinstitutions/%3$s</string>
+    <string name="share_via">Share via&#8230;</string>
+
+    <string name="use_coupon_question">Use coupon?</string>
+    <string name="use_coupon">Use coupon</string>
+    <string name="proceed_payment">Proceed Payment</string>
+    <string name="status">Status</string>
+    <string name="loading_coupon_data">Loading coupon data&#8230;</string>
+    <string name="loading">Loading</string>
+    <string name="remove">Remove</string>
+    <string name="x_coupon_applied">\"%1$s\" APPLIED!</string>
+    <string name="processing_your_transaction">Processing your transaction</string>
+
+    <!--MESSAGE RELATED-->
+    <string name="enter_text_here">Enter text here</string>
+    <string name="not_now">Not now</string>
+    <string name="open_play_store">Open play store</string>
+    <string name="get_updates">Get updates</string>
+    <string name="app_need_update">Your EzyEdu app need to be updated! Please go to Play Store and update it first.</string>
+
+    <!--BLOG-->
+    <string name="like_comment_format">%1$d Like(s) | %2$d Comment(s)</string>
+    <string name="by_format">By %1$s</string>
+    <string name="posting">Posting&#8230;</string>
+
+    <!-- PLACEHOLDER TEXTs -->
+    <string name="lorem_ipsum">" "</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!--level-->
+    <string name="user_level_gold">Gold Member</string>
+    <string name="user_level_silver">Silver Member</string>
+    <string name="user_level_bronze">Bronze Member</string>
+
+    <!--Coupon Related-->
+    <string name="n_points_format">%1$d points</string>
+    <string name="valid_until_n">Valid until %1$s</string>
+    <string name="pick_coupon">Pick Coupon</string>
+    <string name="in_use">In Use</string>
+    <string name="valid">Valid</string>
+    <string name="used">Used</string>
+    <string name="redeem_reward_question">Redeem Reward?</string>
+    <string name="redeem_confirmation_message">Your point will be deducted right away!</string>
+    <string name="processing_redeem">Processing redeem&#8230;</string>
+    <string name="redeem_success_message_info">Success! It will show up on your redeem history</string>
+
+    <!-- Referal Code-->
+    <string name="referral_code">Referral Code</string>
+    <string name="show_referral_code">Show Referral Code</string>
+    <string name="your_referral_code">Your Referral Code</string>
+    <string name="show_referral_code_info">Invite your friend and get EzyEdu points for you and your friend for any successful invite!</string>
+
+    <!--NEARBY-->
+    <string name="search_here">Search here</string>
+
+    <!--FILTER-->
+    <string name="default_sort">Default Sort</string>
+    <string name="latest_first">Latest first</string>
+    <string name="oldest_first">Oldest first</string>
+    <string name="name_desc">Name Z to A</string>
+    <string name="name_asc">Name A to Z</string>
+    <string name="price_range_1">$</string>
+    <string name="price_range_2">$$</string>
+    <string name="price_range_3">$$$</string>
+    <string name="n_km_format">%1$dkm</string>
+    <string name="getting_your_location">Getting your location</string>
+    <string name="getting_your_address">Getting your address info</string>
+    <string name="all_category">All category</string>
+    <string name="all_categories">All Categories</string>
+    <string name="jakarta">Jakarta</string>
+    <string name="budget">Budget</string>
+    <string name="all_subcategory">All subcategory</string>
+    <string name="all_provinces">All provinces</string>
+    <string name="all_cities">All cities</string>
+    <string name="all_districts">All districts</string>
+    <string name="all_facilities">All facilities</string>
+    <string name="no_reviews">No reviews</string>
+    <string name="no_result">No result</string>
+    <string name="learning_center">Learning center in Jakarta</string>
+    <string name="newin_ezyedu">New in EzyEdu</string>
+    <string name="newin_lessioncenter">New in Learning Center</string>
+    <string name="newin_workshop">New in Workshop</string>
+    <string name="newin_physicaledu">New in Physical Education</string>
+    <string name="choose_payment_type">Choose Payment Type</string>
+    <string name="full_payment">Full Payment</string>
+    <string name="payment_loading">Payment Loading...</string>
+    <string name="payment_success">Payment successfull!</string>
+    <string name="payment_failed">Payment failed...</string>
+    <string name="payment_success_details">Your payment has been received.
+        Check your order status or
+        explore other courses here</string>
+    <string name="payment_failed_details">Payment failed. Please try again
+or choose another card</string>
+
+
+    <string name="edit">Edit</string>
+    <string name="approved">Approved</string>
+    <string name="rejected">Rejected</string>
+    <string name="no_pending_product">No Pending Product</string>
+    <string name="no_active_product">No Active Product</string>
+    <string name="no_inactive_product">No Inactive Product</string>
+    <string name="active">Active</string>
+    <string name="inactive">Inactive</string>
+
+    <string name="pending">Pending</string>
+    <string name="processing">Processing</string>
+    <string name="completed">Completed</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="order_number">Order number</string>
+    <string name="order_information">Order Information</string>
+
+    //fb
+
+    <string name="facebook_app_id">708592230515693</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
+
+
+</resources>
