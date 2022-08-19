@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/grey_ezy"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="25sp">
 
@@ -13,9 +13,12 @@
         android:id="@+id/cont_rel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5sp"
-        android:elevation="5dp"
+        android:layout_margin="15sp"
+        android:clipToPadding="false"
+        android:elevation="8dp"
         android:padding="4dp"
+        android:background="@color/white"
+        android:outlineProvider="bounds"
         >
 
         <TextView
@@ -216,6 +219,10 @@
         android:layout_marginStart="15sp"
         android:layout_marginEnd="15sp"
         android:layout_marginBottom="10sp"
+        android:elevation="5dp"
+        android:background="@color/white"
+        android:padding="8dp"
+        android:outlineProvider="bounds"
         >
         <TextView
             android:id="@+id/cd_txt"
@@ -224,6 +231,7 @@
             android:text="Product Details"
             android:textStyle="bold"
             android:layout_marginTop="5dp"
+            android:layout_marginStart="15sp"
             android:textColor="@color/black"
             android:textSize="17sp"
             />
@@ -234,13 +242,7 @@
             android:layout_below="@+id/cd_txt"
             android:layout_marginTop="6dp"
             android:textColor="@color/black"
-            />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/straight_line"
-            android:layout_below="@id/c_b_txt"
-            android:layout_marginTop="-5dp"
+            android:layout_marginStart="15sp"
             />
 
     </RelativeLayout>
@@ -252,7 +254,7 @@
         android:layout_height="wrap_content"
         android:text="Host Details"
         android:textSize="17sp"
-        android:layout_marginTop="-10dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/course_rel"
         android:layout_marginStart="15sp"
         android:textColor="@color/black"
@@ -290,12 +292,15 @@
             android:layout_centerHorizontal="true"
             android:textColor="@color/black"
             android:textSize="17sp"
+            android:maxLines="1"
+            android:textAlignment="center"
             android:layout_below="@+id/ven_logo"
             />
         <TextView
             android:id="@+id/ven_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:layout_below="@id/ven_tittle"
             android:text="address"
             android:textColor="@color/black"
@@ -332,7 +337,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/final_rel_c_one"
-        android:layout_margin="10sp"
+        android:layout_marginStart="15sp"
+        android:layout_marginBottom="15sp"
         >
         <TextView
             android:id="@+id/rv_txt"
@@ -469,10 +475,10 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@id/reate_rel"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="5sp"
             android:background="@drawable/btn_new_white_rounded"
             android:elevation="5dp"
+            android:layout_marginEnd="15sp"
             android:hint="write a review"
             android:textAlignment="center"
             />

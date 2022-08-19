@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -52,7 +54,10 @@ public class Payment_Response extends AppCompatActivity {
     RecyclerView recyclerView;
     private List<Save_Orders> save_ordersList = new ArrayList<>();
     SaveOrderAdapter saveOrderAdapter;
+    ProgressDialog progressDialog;
     @SuppressLint("SetTextI18n")
+
+
 
 
     //retrive base url
@@ -85,6 +90,13 @@ public class Payment_Response extends AppCompatActivity {
         pay_msg = findViewById(R.id.Payment_Response);
         imageView = findViewById(R.id.payment_icon);
         view_order_button = findViewById(R.id.order_page_btn);
+        view_order_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(Payment_Response.this,History_Page.class);
+                startActivity(intent1);
+            }
+        });
         ordr_dtl_txt = findViewById(R.id.order_dtl_txt);
 
         Bundle bundle = getIntent().getExtras();
@@ -95,6 +107,8 @@ public class Payment_Response extends AppCompatActivity {
         String amt = bundle.getString("amt");
 
         sp1 = getApplicationContext().getSharedPreferences("Hash_Count", Context.MODE_PRIVATE);
+
+
         loadCartDetails();
 
         requestQueue = CourseVolleySingleton.getInstance(this).getRequestQueue();
@@ -125,6 +139,10 @@ public class Payment_Response extends AppCompatActivity {
                 int status = 1;
                 int type = 1;
                 SaveOrder(ref_no,tr_id,json,status,type);
+                progressDialog = new ProgressDialog(Payment_Response.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_dialog);
+                progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -138,6 +156,10 @@ public class Payment_Response extends AppCompatActivity {
             int type = 1;
             try {
                 SaveOrder(ref_no,tr_id,json,status,type);
+                progressDialog = new ProgressDialog(Payment_Response.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_dialog);
+                progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -158,6 +180,7 @@ public class Payment_Response extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response)
             {
+                progressDialog.dismiss();
                 Log.i("JsonOrderedDetails",response.toString());
                 try {
                     JSONObject jsonObject1 = response.getJSONObject("payment");
@@ -187,8 +210,8 @@ public class Payment_Response extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error)
             {
+                progressDialog.dismiss();
                 Log.i("JsonOrderedError",error.toString());
-
                 NetworkResponse networkResponse = error.networkResponse;
                 if (networkResponse != null && networkResponse.data != null) {
                     String jsonError = new String(networkResponse.data);
@@ -223,7 +246,11 @@ public class Payment_Response extends AppCompatActivity {
         cart_detailsList = gson.fromJson(json,type);
         Log.i("ArraySizeCheck", String.valueOf(cart_detailsList.size()));
         Log.i("jsonCheck",json);
-
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent1 = new Intent(Payment_Response.this,MainActivity.class);
+        startActivity(intent1);
+    }
 }

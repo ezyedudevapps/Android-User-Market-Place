@@ -61,6 +61,11 @@
         android:layout_below="@id/exp_tittle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabTextAppearance="@style/TabLayoutStyle"
+        app:tabMode="fixed"
+        
+        app:tabGravity="fill"
+        app:tabTextColor="@color/black"
         android:id="@+id/tab1"/>
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"

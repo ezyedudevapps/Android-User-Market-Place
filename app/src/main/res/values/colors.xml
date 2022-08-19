@@ -14,17 +14,20 @@
     <color name="ezy_new">#87BCD5</color>
     <color name="ezy_new_up">#90C5DD</color>
     <color name="nevy">#294CC6</color>
+    <color name="colorGray">#D0D0D0</color>
     <color name="red">#DD3F33</color>
     <color name="grey">#488C7473</color>
+    <color name="grey_ezy">#48D6D1D1</color>
     <color name="green">#34933B</color>
     <color name="transparent">#00000000</color>
-
+    <color name="yellow">#F3D620</color>
     <color name="transp">#B3FFFFFF</color>
 
     <color name="greyish_orange_500">#F8F4F0</color>
     <color name="orangish_orange_500">#F8CCAA</color>
 
     <color name="green_200">#A5D6A7</color>
+    <color name="green_100">#D9F6DB</color>
     <color name="blue_grey_200">#B0BEC5</color>
     <color name="grey_200">#EEEEEE</color>
 

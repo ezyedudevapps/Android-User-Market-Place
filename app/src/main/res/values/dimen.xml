@@ -12,6 +12,14 @@
     <dimen name="normal_medium_font_size">16dp</dimen>
     <dimen name="medium_font_size">18dp</dimen>
 
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="zero">0dp</dimen>
+
+    <dimen name="half_dp">0.5dp</dimen>
+
+    <dimen name="edit_text_radius">3dp</dimen>
+
     <!--PADDING & MARGIN-->
     <dimen name="padding_margin_thin">4dp</dimen>
     <dimen name="padding_margin_normal_thin">8dp</dimen>

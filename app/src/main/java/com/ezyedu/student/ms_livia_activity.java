@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ezyedu.student.model.Globals;
@@ -22,6 +23,8 @@ public class ms_livia_activity extends AppCompatActivity {
     Button chat_btn;
     String session_id = null;
 
+    TextView main_ms,f1,f2,f3;
+    String language = null;
 
     //retrive base url
     Globals sharedData = Globals.getInstance();
@@ -31,12 +34,39 @@ public class ms_livia_activity extends AppCompatActivity {
     ImageGlobals shareData1 = ImageGlobals.getInstance();
     String img_url_base;
 
+    TextView hom,ms,exp,crt,othrs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ms_livia_activity);
 
+        chat_btn = findViewById(R.id.chatwithmislivia);
 
+        main_ms = findViewById(R.id.ms1);
+        f1 = findViewById(R.id.ms_f1);
+        f2 = findViewById(R.id.ms_f2);
+        f3 = findViewById(R.id.txt3);
+        hom = findViewById(R.id.home_txt);
+        ms = findViewById(R.id.ms_livia_text);
+        exp = findViewById(R.id.explore_txt);
+        crt = findViewById(R.id.Cart_text);
+        othrs = findViewById(R.id.Others_text);
+        SharedPreferences sharedPreferences1 = getApplicationContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+
+        if (language.equals("Indonesia"))
+        {
+            hom.setText("Beranda");
+            ms.setText("Ms.Livia");
+            exp.setText("Explore");
+            crt.setText("Keranjang");
+            othrs.setText("Lainya");
+            main_ms.setText("Kami akan bantu anda cari yang terbaik");
+            f1.setText("Kami menyusun program edukasi terbaik di satu app");
+            f3.setText("Memberi edukasi anda pengalaman terbaik");
+            chat_btn.setText("Mulai Chatting Dengan Ms.Livia Sekarang");
+        }
         //get domain url
         base_app_url = sharedData.getValue();
         Log.i("domain_url",base_app_url);
@@ -58,7 +88,7 @@ public class ms_livia_activity extends AppCompatActivity {
         Log.i("Session_main_activity",session_id);
 
 
-        chat_btn = findViewById(R.id.chatwithmislivia);
+
         chat_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -16,6 +16,7 @@
         android:background="#F99E23"
         >
         <TextView
+            android:id="@+id/main_crt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cart"
@@ -89,7 +90,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:visibility="gone"
-            android:text="Looks like you haven't added any coiurses to your cart yet"
+            android:text="Looks like you haven't added any courses to your cart yet"
             android:textColor="@color/black"
             android:textSize="8pt" />
 
@@ -135,7 +136,7 @@
             android:layout_alignParentBottom="true"
             android:text="Home"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
         <ImageView
             android:id="@+id/home_btn"
             android:layout_width="40dp"
@@ -160,7 +161,7 @@
             android:text="Explore"
             android:layout_alignParentBottom="true"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
 
         <ImageView
@@ -191,7 +192,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="20dp"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
 
         <ImageView
@@ -199,7 +200,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_above="@id/ms_livia_text"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="25dp"
             android:src="@drawable/ic_ms_livia" />
     </RelativeLayout>
 
@@ -221,16 +222,16 @@
             android:layout_height="wrap_content"
             android:text="Cart"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="32dp"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <ImageView
             android:id="@+id/cart_btn"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_cart"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="30dp"
             android:layout_above="@id/Cart_text"/>
     </RelativeLayout>
 
@@ -242,7 +243,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="35sp"
+        android:layout_marginEnd="15sp"
         android:layout_alignParentEnd="true"
         >
 
@@ -252,20 +253,17 @@
             android:layout_height="wrap_content"
             android:text="Others"
             android:layout_alignParentBottom="true"
-
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <ImageView
             android:id="@+id/others_btn"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_others"
-
+            android:layout_marginStart="5dp"
             android:layout_above="@id/Others_text"/>
     </RelativeLayout>
-
-
 
 
 

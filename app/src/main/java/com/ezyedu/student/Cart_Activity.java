@@ -50,7 +50,7 @@ public class Cart_Activity extends AppCompatActivity {
     private List<Cart_Details> cart_detailsList ;
     ImageView imageView;
 
-    TextView t1,t2;
+    TextView cart, t1,t2;
     Button btn;
     String session_id = null;
     int total_price = 0;
@@ -64,6 +64,9 @@ public class Cart_Activity extends AppCompatActivity {
     ImageGlobals shareData1 = ImageGlobals.getInstance();
     String img_url_base;
 
+  String language = null;
+    TextView hom,ms,exp,crt,othrs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,22 +74,46 @@ public class Cart_Activity extends AppCompatActivity {
 
         //get domain url
         base_app_url = sharedData.getValue();
-        Log.i("domain_url",base_app_url);
+      //  Log.i("domain_url",base_app_url);
 
         //get image loading url
         img_url_base = shareData1.getIValue();
-        Log.i("img_url_global",img_url_base);
+        //Log.i("img_url_global",img_url_base);
 
 
+        cart =findViewById(R.id.main_crt);
         imageView = findViewById(R.id.cart_empty_img);
         t1 = findViewById(R.id.ec);
         t2 = findViewById(R.id.ec1);
         btn = findViewById(R.id.openCourses);
 
+        hom = findViewById(R.id.home_txt);
+        ms = findViewById(R.id.ms_livia_text);
+        exp = findViewById(R.id.explore_txt);
+        crt = findViewById(R.id.Cart_text);
+        othrs = findViewById(R.id.Others_text);
+
+        SharedPreferences sharedPreferences1 = getApplicationContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+
+        if (language.equals("Indonesia"))
+        {
+            hom.setText("Beranda");
+            ms.setText("Ms.Livia");
+            exp.setText("Explore");
+            crt.setText("Keranjang");
+            othrs.setText("Lainya");
+            cart.setText("Keranjang");
+            t1.setText("Keranjang kamu kosong");
+            t2.setText("Sepertinya kamu belum masukan kursus kamu ke keranjang");
+            btn.setText("Cari Kursus");
+        }
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(Cart_Activity.this,SearchActivity.class);
+                Intent intent1 = new Intent(Cart_Activity.this,Search_Course_Activity.class);
                 startActivity(intent1);
             }
         });
@@ -94,8 +121,12 @@ check_out_btn = findViewById(R.id.prc_checkout);
 check_out_btn.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent intent1 = new Intent(Cart_Activity.this,Checkout_Page.class);
+       /* Intent intent1 = new Intent(Cart_Activity.this,Checkout_Page.class);
         startActivity(intent1);
+        */
+        Intent intent1 = new Intent(Cart_Activity.this,PaymentMethodActivity.class);
+        startActivity(intent1);
+
     }
 });
         //rel layout bottom nav

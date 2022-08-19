@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_ezy"
     tools:context=".Others_Activity">
 
 
@@ -12,17 +13,26 @@
     android:layout_height="150dp"
     android:background="@drawable/img_sign_background"
     >
+
+    <ImageView
+        android:id="@+id/welcome_text"
+        android:layout_width="160dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/img_ezyedu_text_logo"
+        />
     <TextView
         android:id="@+id/welcm_name"
         android:layout_width="170dp"
-        android:layout_height="40dp"
-        android:text="Welcome Guest"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:layout_marginStart="15dp"
         android:layout_centerVertical="true"
-        android:layout_marginStart="25dp"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:maxLines="1"
-        android:textSize="20sp"/>
+        android:textStyle="normal"
+        android:typeface="serif"
+        android:textSize="17sp"/>
 
 </RelativeLayout>
 
@@ -66,6 +76,7 @@
             android:padding="@dimen/space">
 
             <TextView
+                android:id="@+id/lng"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space"
@@ -107,6 +118,7 @@
             android:padding="@dimen/space">
 
             <TextView
+                android:id="@+id/myc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space"
@@ -146,6 +158,7 @@
             android:padding="@dimen/space">
 
             <TextView
+                android:id="@+id/bmk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space"
@@ -185,6 +198,7 @@
             android:padding="@dimen/space">
 
             <TextView
+                android:id="@+id/bac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space"
@@ -225,6 +239,7 @@
             android:padding="@dimen/space">
 
             <TextView
+                android:id="@+id/hstry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space"
@@ -265,6 +280,7 @@
             android:padding="@dimen/space">
 
             <TextView
+                android:id="@+id/rfrl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space"
@@ -306,6 +322,7 @@
             android:padding="@dimen/space">
 
             <TextView
+                android:id="@+id/stngs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space"
@@ -339,6 +356,7 @@
         android:visibility="gone"
         >
             <TextView
+                android:id="@+id/lgout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space"
@@ -375,6 +393,15 @@
         />
 
 
+    <View
+        android:id="@+id/vu"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/black"
+        android:layout_above="@+id/rel_1"
+        />
+
 
     <RelativeLayout
         android:id="@+id/rel_1"
@@ -391,7 +418,7 @@
             android:layout_alignParentBottom="true"
             android:text="Home"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
         <ImageView
             android:id="@+id/home_btn"
             android:layout_width="40dp"
@@ -416,7 +443,7 @@
             android:text="Explore"
             android:layout_alignParentBottom="true"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
 
         <ImageView
@@ -447,7 +474,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="20dp"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
 
         <ImageView
@@ -455,7 +482,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_above="@id/ms_livia_text"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="25dp"
             android:src="@drawable/ic_ms_livia" />
     </RelativeLayout>
 
@@ -477,16 +504,16 @@
             android:layout_height="wrap_content"
             android:text="Cart"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="32dp"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <ImageView
             android:id="@+id/cart_btn"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_cart"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="30dp"
             android:layout_above="@id/Cart_text"/>
     </RelativeLayout>
 
@@ -498,7 +525,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="35sp"
+        android:layout_marginEnd="15sp"
         android:layout_alignParentEnd="true"
         >
 
@@ -508,19 +535,17 @@
             android:layout_height="wrap_content"
             android:text="Others"
             android:layout_alignParentBottom="true"
-
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <ImageView
             android:id="@+id/others_btn"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_others"
-
+            android:layout_marginStart="5dp"
             android:layout_above="@id/Others_text"/>
     </RelativeLayout>
-
 
 
 

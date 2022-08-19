@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -27,6 +29,8 @@ public class SearchActivity extends AppCompatActivity
     ImageGlobals shareData1 = ImageGlobals.getInstance();
     String img_url_base;
 
+    String language = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +51,26 @@ public class SearchActivity extends AppCompatActivity
         searchFragmentAdapter = new SearchFragmentAdapter(fragmentManager,getLifecycle());
         viewPager2.setAdapter(searchFragmentAdapter);
 
-        tabLayout.addTab(tabLayout.newTab().setText("Institutions"));
-        tabLayout.addTab(tabLayout.newTab().setText("Courses"));
-        tabLayout.addTab(tabLayout.newTab().setText("Articles"));
+        SharedPreferences sharedPreferences1 = getApplicationContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+
+        if (language.equals("Indonesia"))
+        {
+
+            tabLayout.addTab(tabLayout.newTab().setText("Institusi"));
+            tabLayout.addTab(tabLayout.newTab().setText("Kursus"));
+            tabLayout.addTab(tabLayout.newTab().setText("Artikel"));
+        }
+        else
+        {
+
+            tabLayout.addTab(tabLayout.newTab().setText("Institutions"));
+            tabLayout.addTab(tabLayout.newTab().setText("Courses"));
+            tabLayout.addTab(tabLayout.newTab().setText("Articles"));
+        }
+
+
 
 
 

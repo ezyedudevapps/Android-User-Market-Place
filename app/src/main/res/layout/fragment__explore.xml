@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_ezy"
     tools:context=".Fragments.Fragment_Explore">
 
     <!-- TODO: Update blank fragment layout -->
@@ -17,51 +18,100 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
-        <Button
+
+        <RelativeLayout
             android:id="@+id/institu_btn"
             android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:layout_margin="15dp"
             android:background="@drawable/orange_oval"
-            android:text="Institutions"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:layout_marginStart="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            />
+            android:layout_margin="15sp"
+            android:elevation="25dp"
+            >
+
+            <TextView
+                android:id="@+id/ei1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="35dp"
+                android:text="Institutions"
+                android:textSize="23sp"
+                android:layout_marginStart="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                />
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60sp"
+                android:src="@drawable/ic_institutions"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="40sp"
+                />
+        </RelativeLayout>
 
 
-        <Button
+        <RelativeLayout
             android:id="@+id/rr2"
-            android:layout_margin="15dp"
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:background="@drawable/og_sky"
-            android:text="Courses"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:layout_marginStart="15sp"
-            android:textStyle="bold"
+            android:layout_margin="15sp"
+            android:elevation="25dp"
+            >
 
-            />
+            <TextView
+                android:id="@+id/ec2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="35dp"
+                android:text="Courses"
+                android:textSize="23sp"
+                android:layout_marginStart="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                />
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60sp"
+                android:src="@drawable/course"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="40sp"
+                />
+        </RelativeLayout>
 
 
 
-        <Button
+        <RelativeLayout
             android:id="@+id/r33"
-            android:layout_margin="15dp"
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:background="@drawable/og_purple"
-            android:text="Near Me"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:layout_marginStart="15sp"
-            android:textStyle="bold"
-            />
+            android:layout_margin="15sp"
+            android:elevation="25dp"
+            >
+
+            <TextView
+                android:id="@+id/en3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="35dp"
+                android:text="Near Me"
+                android:textSize="23sp"
+                android:layout_marginStart="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                />
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60sp"
+                android:src="@drawable/nearme"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="40sp"
+                />
+        </RelativeLayout>
+
 
 
         <Button
@@ -77,9 +127,6 @@
             android:layout_marginStart="15sp"
             android:textStyle="bold"
         />
-
-
-
 
 
 

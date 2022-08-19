@@ -6,20 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
 
-
+    <RelativeLayout
+        android:id="@+id/search_m"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ezy"
+        >
    <com.google.android.material.tabs.TabLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:layout_marginTop="10dp"
        android:id="@+id/search_tab"
-       app:tabBackground="@color/ezy"
        app:tabTextColor="@color/white"
        app:tabIndicatorColor="@color/black"
        />
+    </RelativeLayout>
     <androidx.viewpager2.widget.ViewPager2
-        android:layout_below="@id/search_tab"
+        android:layout_below="@id/search_m"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/search_pager"
         />
+
 
 </RelativeLayout>

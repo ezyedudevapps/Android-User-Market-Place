@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,9 @@ public class History_Page extends AppCompatActivity {
     ImageGlobals shareData1 = ImageGlobals.getInstance();
     String img_url_base;
 
+    String language = null;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,16 +52,31 @@ public class History_Page extends AppCompatActivity {
         Log.i("Session_HPactivity",session_id);
 
 
+        SharedPreferences sharedPreferences1 = getApplicationContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+
         tableLayout = findViewById(R.id.tab1);
         pager2 = findViewById(R.id.view_p);
         FragmentManager fragmentManager = getSupportFragmentManager();
         hIstory_fragment_adapter = new HIstory_Fragment_Adapter(fragmentManager,getLifecycle());
         pager2.setAdapter(hIstory_fragment_adapter);
 
-        tableLayout.addTab(tableLayout.newTab().setText("Pending"));
-        tableLayout.addTab(tableLayout.newTab().setText("Processing"));
-        tableLayout.addTab(tableLayout.newTab().setText("Completed"));
-        tableLayout.addTab(tableLayout.newTab().setText("Cancelled"));
+        if (language.equals("Indonesia"))
+        {
+            tableLayout.addTab(tableLayout.newTab().setText("Pending"));
+            tableLayout.addTab(tableLayout.newTab().setText("Diproses"));
+            tableLayout.addTab(tableLayout.newTab().setText("Selesai"));
+            tableLayout.addTab(tableLayout.newTab().setText("Dibatalakan"));
+        }
+        else
+        {
+            tableLayout.addTab(tableLayout.newTab().setText("Pending"));
+            tableLayout.addTab(tableLayout.newTab().setText("Processing"));
+            tableLayout.addTab(tableLayout.newTab().setText("Completed"));
+            tableLayout.addTab(tableLayout.newTab().setText("Cancelled"));
+        }
+
 
         tableLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -82,5 +101,11 @@ public class History_Page extends AppCompatActivity {
                 tableLayout.selectTab(tableLayout.getTabAt(position));
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent1 = new Intent(History_Page.this,Others_Activity.class);
+        startActivity(intent1);
     }
 }

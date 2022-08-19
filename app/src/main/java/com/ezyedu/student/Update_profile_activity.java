@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.ContentUris;
@@ -16,6 +17,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -45,6 +48,7 @@ import com.bumptech.glide.Glide;
 import com.ezyedu.student.model.CourseVolleySingleton;
 import com.ezyedu.student.model.Globals;
 import com.ezyedu.student.model.ImageGlobals;
+import com.ezyedu.student.model.RealPathUtil;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -72,7 +76,6 @@ import okhttp3.Response;
 
 public class Update_profile_activity extends AppCompatActivity {
 
-    private static final int PICK_IMAGE_REQUEST = 1;
     ImageView Change_pic;
 
     private ProgressDialog LoadingBar;
@@ -85,6 +88,9 @@ public class Update_profile_activity extends AppCompatActivity {
     Globals sharedData = Globals.getInstance();
     String base_app_url;
 
+    String path = null;
+
+    ProgressDialog progressDialog;
 
     RadioButton g1,g2,g3;
     //get img global url
@@ -98,109 +104,8 @@ public class Update_profile_activity extends AppCompatActivity {
             name_update = null, birth_update = null, gender_update = null, phone_update = null, image_update = null;
     RequestQueue requestQueue;
 
-    public static String getFilePath(Context context, Uri uri) {
-        String selection = null;
-        String[] selectionArgs = null;
-        // Uri is different in versions after KITKAT (Android 4.4), we need to
-        if (Build.VERSION.SDK_INT >= 19 && DocumentsContract.isDocumentUri(context.getApplicationContext(), uri)) {
-            if (isGoogleDriveUri(uri)) {
-                return getDriveFilePath(uri, context);
-            } else if (isExternalStorageDocument(uri)) {
-                final String docId = DocumentsContract.getDocumentId(uri);
-                final String[] split = docId.split(":");
-                return Environment.getExternalStorageDirectory() + "/" + split[1];
-            } else if (isDownloadsDocument(uri)) {
-                final String id = DocumentsContract.getDocumentId(uri);
-                uri = ContentUris.withAppendedId(
-                        Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
-            } else if (isMediaDocument(uri)) {
-                final String docId = DocumentsContract.getDocumentId(uri);
-                final String[] split = docId.split(":");
-                final String type = split[0];
-                if ("image".equals(type)) {
-                    uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-                } else if ("video".equals(type)) {
-                    uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
-                } else if ("audio".equals(type)) {
-                    uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-                } else if ("pdf".equals(type)) {
-                    uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-                }
-                selection = "_id=?";
-                selectionArgs = new String[]{
-                        split[1]
-                };
-            }
-        }
-        if ("content".equalsIgnoreCase(uri.getScheme())) {
-            String[] projection = {
-                    MediaStore.Images.Media.DATA
-            };
-            Cursor cursor = null;
-            try {
-                cursor = context.getContentResolver()
-                        .query(uri, projection, selection, selectionArgs, null);
-                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                if (cursor.moveToFirst()) {
-                    return cursor.getString(column_index);
-                }
-            } catch (Exception e) {
-            }
-        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
-            return uri.getPath();
-        }
-        return null;
-    }
-
-    public static boolean isGoogleDriveUri(Uri uri) {
-        return "com.google.android.apps.docs.storage".equals(uri.getAuthority()) || "com.google.android.apps.docs.storage.legacy".equals(uri.getAuthority());
-    }
-
-    public static boolean isExternalStorageDocument(Uri uri) {
-        return "com.android.externalstorage.documents".equals(uri.getAuthority());
-    }
-
-    public static boolean isDownloadsDocument(Uri uri) {
-        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
-    }
-
-    public static boolean isMediaDocument(Uri uri) {
-        return "com.android.providers.media.documents".equals(uri.getAuthority());
-    }
-
-    private static String getDriveFilePath(Uri uri, Context context) {
-        Uri returnUri = uri;
-        Cursor returnCursor = context.getContentResolver().query(returnUri, null, null, null, null);
-        int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
-        int sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE);
-        returnCursor.moveToFirst();
-        String name = (returnCursor.getString(nameIndex));
-        String size = (Long.toString(returnCursor.getLong(sizeIndex)));
-        File file = new File(context.getCacheDir(), name);
-        try {
-            InputStream inputStream = context.getContentResolver().openInputStream(uri);
-            FileOutputStream outputStream = new FileOutputStream(file);
-            int read = 0;
-            int maxBufferSize = 1 * 1024 * 1024;
-            int bytesAvailable = inputStream.available();
-
-            //int bufferSize = 1024;
-            int bufferSize = Math.min(bytesAvailable, maxBufferSize);
-
-            final byte[] buffers = new byte[bufferSize];
-            while ((read = inputStream.read(buffers)) != -1) {
-                outputStream.write(buffers, 0, read);
-            }
-            Log.e("File Size", "Size " + file.length());
-            inputStream.close();
-            outputStream.close();
-            Log.e("File Path", "Path " + file.getPath());
-            Log.e("File Size", "Size " + file.length());
-        } catch (Exception e) {
-            Log.e("Exception", e.getMessage());
-        }
-        return file.getPath();
-    }
+    TextView usrname,myprofile,datebirth,phonenumber,gendertext;
+    String language = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -228,6 +133,30 @@ public class Update_profile_activity extends AppCompatActivity {
         imageView = findViewById(R.id.image_to_update);
         upload_server = findViewById(R.id.update_progile_btn);
 
+        myprofile= findViewById(R.id.mprfle);
+        usrname=  findViewById(R.id.usr_txt);
+        datebirth= findViewById(R.id.dob_txt);
+        phonenumber= findViewById(R.id.phn_txt);
+        gendertext= findViewById(R.id.gndr_txt);
+
+        SharedPreferences sharedPreferences1 = getApplicationContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+
+        if (language.equals("Indonesia"))
+        {
+            myprofile.setText("Profile Saya");
+            usrname.setText("Nama User");
+            datebirth.setText("Tanggal Lahir");
+            phonenumber.setText("Nomer HP");
+            gendertext.setText("Jenis Kelamin");
+            upload_server.setText("Perbaharui");
+            g1.setText("Laki-Laki");
+            g2.setText("Perempuan");
+            g3.setText("Lainya");
+        }
+
+
         dob_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -243,19 +172,24 @@ public class Update_profile_activity extends AppCompatActivity {
 
         fetchData();
 
+        ActivityCompat.requestPermissions(Update_profile_activity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
         Change_pic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(Update_profile_activity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
-                        && ContextCompat.checkSelfPermission(Update_profile_activity.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
-                        && ContextCompat.checkSelfPermission(Update_profile_activity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                    openFileChooser();
-                } else {
-                    ActivityCompat.requestPermissions(Update_profile_activity.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 101);
+
+                if(ContextCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED)
+                {
+                    Intent intent1= new Intent();
+                    intent1.setType("image/*");
+                    intent1.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(intent1,10);
+                }
+                else
+                {
+                    ActivityCompat.requestPermissions(Update_profile_activity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
                 }
             }
         });
-
         //upload image to server
         upload_server.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -265,19 +199,86 @@ public class Update_profile_activity extends AppCompatActivity {
                 phone_update = phone_edit.getText().toString();
                 birth_update = dob_edit.getText().toString();
                 try {
-                    LoadingBar = new ProgressDialog(Update_profile_activity.this);
-                    LoadingBar.setTitle("Please Wait");
-                    LoadingBar.setMessage("Updating Profile");
-                    LoadingBar.setCanceledOnTouchOutside(false);
-                    LoadingBar.show();
+                    if (path == null)
+                    {
+                        if (TextUtils.isEmpty(name_update))
+                        {
+                            Toast.makeText(Update_profile_activity.this, "Name is Empty", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (TextUtils.isEmpty(phone_update))
+                        {
+                            Toast.makeText(Update_profile_activity.this, "Phone is Empty", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (TextUtils.isEmpty(birth_update))
+                        {
+                            Toast.makeText(Update_profile_activity.this, "Birth date is Empty", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (TextUtils.isEmpty(Gender))
+                        {
+                            Toast.makeText(Update_profile_activity.this, "Please Select Gender", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            progressDialog = new ProgressDialog(Update_profile_activity.this);
+                            progressDialog.show();
+                            progressDialog.setContentView(R.layout.progress_dialog);
+                            progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+                            uploadData(name_update, gender_update, phone_update, birth_update);
+                        }
+                    }
+                    else
+                    {
+                        if (TextUtils.isEmpty(name_update))
+                        {
+                            Toast.makeText(Update_profile_activity.this, "Name is Empty", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (TextUtils.isEmpty(phone_update))
+                        {
+                            Toast.makeText(Update_profile_activity.this, "Phone is Empty", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (TextUtils.isEmpty(birth_update))
+                        {
+                            Toast.makeText(Update_profile_activity.this, "Birth date is Empty", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (TextUtils.isEmpty(Gender))
+                        {
+                            Toast.makeText(Update_profile_activity.this, "Please Select Gender", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            progressDialog = new ProgressDialog(Update_profile_activity.this);
+                            progressDialog.show();
+                            progressDialog.setContentView(R.layout.progress_dialog);
+                            progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+                            uploadImgage(path,name_update,phone_update,birth_update,Gender);
+                        }
 
-                    uploadData(name_update, gender_update, phone_update, birth_update);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         });
     }
+
+    //pic img
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 10 && resultCode == Activity.RESULT_OK)
+        {
+            Uri uri = data.getData();
+            Context context = Update_profile_activity.this;
+            path = RealPathUtil.getRealPath(context,uri);
+            Log.i("imgpth",path);
+            Bitmap bitmap = BitmapFactory.decodeFile(path);
+            imageView.setImageBitmap(bitmap);
+         //   uploadImg(path);
+        }
+
+    }
+
+
 
     private void ShowDialog()
     {
@@ -344,7 +345,7 @@ public class Update_profile_activity extends AppCompatActivity {
                     }
                     else
                     {
-                        username_get = response.getString("username");
+                        username_get = response.getString("name");
                     }
 
                     String img_url = "https://dpzt0fozg75zu.cloudfront.net/";
@@ -441,16 +442,16 @@ public class Update_profile_activity extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(com.android.volley.Request.Method.POST, url,jsonObject, new com.android.volley.Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                progressDialog.dismiss();
                 Log.i("responseForUpdatPro", response.toString());
-                LoadingBar.dismiss();
                 Toast.makeText(Update_profile_activity.this, "Profile Updated Successfully", Toast.LENGTH_SHORT).show();
-            Intent intent1 = new Intent(Update_profile_activity.this,Others_Activity.class);
+           Intent intent1 = new Intent(Update_profile_activity.this,Others_Activity.class);
             startActivity(intent1);
             }
         }, new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                LoadingBar.dismiss();
+                progressDialog.dismiss();
                 Log.i("ErrorForUpdatePro", error.toString());
                 NetworkResponse networkResponse = error.networkResponse;
                 if (networkResponse != null && networkResponse.data != null) {
@@ -479,17 +480,10 @@ public class Update_profile_activity extends AppCompatActivity {
     }
 
 
-    private void uploadImgage(String path) {
+    private void uploadImgage(String path,String name_update,String phone_update,String birth_update,String Gender) {
         try {
-            LoadingBar = new ProgressDialog(this);
-            LoadingBar.setTitle("Please Wait");
-            LoadingBar.setMessage("Changing Profile Picture");
-            LoadingBar.setCanceledOnTouchOutside(false);
-            LoadingBar.show();
-
             File file = new File(path);
             Log.e(MainActivity.class.getSimpleName(), "uploadImgage: " + file.getPath());
-            Glide.with(this).load(path).into(((ImageView) findViewById(R.id.image_to_update)));
             OkHttpClient client = new OkHttpClient.Builder()
                     .connectTimeout(100, TimeUnit.SECONDS)
                     .writeTimeout(180, TimeUnit.SECONDS)
@@ -499,6 +493,10 @@ public class Update_profile_activity extends AppCompatActivity {
                 MultipartBody requestBody = new MultipartBody.Builder()
                         .setType(MultipartBody.FORM)
                         .addFormDataPart("image", file.getName(), RequestBody.create(file, MediaType.parse("multipart/form-data")))
+                        .addFormDataPart("name",name_update)
+                        .addFormDataPart("phone",phone_update)
+                        .addFormDataPart("birth_date",birth_update)
+                        .addFormDataPart("gender",Gender)
                         .build();
                 Request request = new Request.Builder()
                         .url(base_app_url+"api/user/profile")
@@ -510,18 +508,20 @@ public class Update_profile_activity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
                         Log.d("Response", e.toString());
-                        LoadingBar.dismiss();
+                        progressDialog.dismiss();
                         Toast.makeText(Update_profile_activity.this, e.toString(), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                         Log.d("Response", response.body().string());
-                        LoadingBar.dismiss();
+                        progressDialog.dismiss();
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override
                             public void run() {
-                                Toast toast = Toast.makeText(Update_profile_activity.this, "Profile Picture Uploaded Successfully", Toast.LENGTH_SHORT);
+                                Intent intent1 = new Intent(Update_profile_activity.this,Others_Activity.class);
+                                startActivity(intent1);
+                                Toast toast = Toast.makeText(Update_profile_activity.this, "Profile Uploaded Successfully", Toast.LENGTH_SHORT);
                                 toast.show();
                             }
                         });
@@ -531,49 +531,6 @@ public class Update_profile_activity extends AppCompatActivity {
             }
         } catch (Exception e) {
             Log.d("Response", e.toString());
-        }
-    }
-
-    private void openFileChooser() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-    }
-
-    // And to convert the image URI to the direct file system path of the image file
-    public String getImagePath(Uri uri) {
-        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-        cursor.moveToFirst();
-        String document_id = cursor.getString(0);
-        document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
-        cursor.close();
-        cursor = getContentResolver().query(
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
-        cursor.moveToFirst();
-        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-        cursor.close();
-        return path;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            uploadImgage(getFilePath(this, data.getData()));
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 101) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "all permission's granted", Toast.LENGTH_LONG).show();
-                openFileChooser();
-            } else {
-                ActivityCompat.requestPermissions(Update_profile_activity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 101);
-            }
         }
     }
 

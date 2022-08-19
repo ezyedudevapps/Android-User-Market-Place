@@ -8,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.ezyedu.student.Fragments.Fragment_bookmark_articles;
 import com.ezyedu.student.Fragments.fragment_bookmark_course;
+import com.ezyedu.student.Fragments.fragment_bookmark_institution;
 
 public class Bookmarks_fragment_adapter extends FragmentStateAdapter {
     public Bookmarks_fragment_adapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
@@ -20,13 +21,15 @@ public class Bookmarks_fragment_adapter extends FragmentStateAdapter {
         switch (position)
         {
             case 1:
-                return new Fragment_bookmark_articles();
+                return new fragment_bookmark_course();
+            case 2:
+                return  new Fragment_bookmark_articles();
         }
-        return new fragment_bookmark_course();
+        return new fragment_bookmark_institution();
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

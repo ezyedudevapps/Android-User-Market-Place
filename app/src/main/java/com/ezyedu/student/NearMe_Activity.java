@@ -221,5 +221,9 @@ public class NearMe_Activity extends AppCompatActivity implements LocationListen
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Intent intent1 = new Intent(NearMe_Activity.this,Explore_Activity.class);
+        startActivity(intent1);
+    }
 }

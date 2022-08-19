@@ -2,6 +2,7 @@ package com.ezyedu.student.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.text.util.Linkify;
@@ -36,6 +37,9 @@ public class VendorInfoAdapter extends RecyclerView.Adapter<VendorInfoAdapter.Ve
 
     public  static String img_url_base;
     public static  String base_app_url;
+
+    String language = null;
+
 
     public VendorInfoAdapter(Context context, List<VendorInfo> vendorInfoList) {
         this.context = context;
@@ -77,75 +81,6 @@ public class VendorInfoAdapter extends RecyclerView.Adapter<VendorInfoAdapter.Ve
         }
 
         String path = vendorInfo.getVendor_logo();
-        String img_url = "https://dpzt0fozg75zu.cloudfront.net/";
-        if (path.equals("null"))
-        {
-            path = "images/courses/vneyy1fk-aOAEDo.jpeg";
-            Glide.with(context).load(img_url_base+path).into(holder.logo);
-        }
-        else {
-            String img = img_url_base + path;
-            Glide.with(context).load(img).into(holder.logo);
-        }
-        holder.instotution_name.setText(vendorInfo.getVendor_name());
-        String star = vendorInfo.getVendor_rating();
-
-        if (star == "0.0000")
-        {
-            holder.e.setVisibility(View.VISIBLE);
-            holder.e1.setVisibility(View.VISIBLE);
-            holder.e2.setVisibility(View.VISIBLE);
-            holder.e3.setVisibility(View.VISIBLE);
-            holder.e4.setVisibility(View.VISIBLE);
-        }
-        else if (star == "1.0000")
-        {
-            holder.rating_img.setVisibility(View.VISIBLE);
-            holder.e1.setVisibility(View.VISIBLE);
-            holder.e2.setVisibility(View.VISIBLE);
-            holder.e3.setVisibility(View.VISIBLE);
-            holder.e4.setVisibility(View.VISIBLE);
-        }
-        else if (star == "2.0000" )
-        {
-            holder.rating_img.setVisibility(View.VISIBLE);
-            holder.f1.setVisibility(View.VISIBLE);
-            holder.e2.setVisibility(View.VISIBLE);
-            holder.e3.setVisibility(View.VISIBLE);
-            holder.e4.setVisibility(View.VISIBLE);
-        }
-        else if (star == "3.0000")
-        {
-            holder.rating_img.setVisibility(View.VISIBLE);
-            holder.f1.setVisibility(View.VISIBLE);
-            holder.f2.setVisibility(View.VISIBLE);
-            holder.e3.setVisibility(View.VISIBLE);
-            holder.e4.setVisibility(View.VISIBLE);
-        }
-        else if (star == "4.0000")
-        {
-            holder.rating_img.setVisibility(View.VISIBLE);
-            holder.f1.setVisibility(View.VISIBLE);
-            holder.f2.setVisibility(View.VISIBLE);
-            holder.f3.setVisibility(View.VISIBLE);
-            holder.e4.setVisibility(View.VISIBLE);
-        }
-        else if (star == "5.0000")
-        {
-            holder.rating_img.setVisibility(View.VISIBLE);
-            holder.f1.setVisibility(View.VISIBLE);
-            holder.f2.setVisibility(View.VISIBLE);
-            holder.f3.setVisibility(View.VISIBLE);
-            holder.f4.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-            holder.rating_img.setVisibility(View.VISIBLE);
-            holder.f1.setVisibility(View.VISIBLE);
-            holder.f2.setVisibility(View.VISIBLE);
-            holder.f3.setVisibility(View.VISIBLE);
-            holder.f4.setVisibility(View.VISIBLE);
-        }
 
 
         if (!vendorInfo.getInstagram().equals("null"))
@@ -172,12 +107,16 @@ public class VendorInfoAdapter extends RecyclerView.Adapter<VendorInfoAdapter.Ve
             holder.youtube.setText(vendorInfo.getYoutube());
             Linkify.addLinks(holder.youtube, Linkify.ALL);
         }
-        if (!vendorInfo.getTiktok().equals("null"))
+/*        if (!vendorInfo.getTiktok().equals("null"))
         {
             holder.r1.setVisibility(View.VISIBLE);
             holder.test.setText(vendorInfo.getTiktok());
             Linkify.addLinks(holder.test, Linkify.ALL);
         }
+
+
+ */
+
 
 
 
@@ -221,37 +160,37 @@ public class VendorInfoAdapter extends RecyclerView.Adapter<VendorInfoAdapter.Ve
 
         int mon = vendorInfo.getMon();
         if (mon == 1) {
-            holder.monday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange_500));
+            holder.monday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
             holder.monday.setTextColor(Color.WHITE);
         }
         int tues = vendorInfo.getTues();
         if (tues == 1) {
-            holder.tuesday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange_500));
+            holder.tuesday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
             holder.tuesday.setTextColor(Color.WHITE);
         }
         int wed = vendorInfo.getWednes();
         if (wed == 1) {
-            holder.wednesday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange_500));
+            holder.wednesday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
             holder.wednesday.setTextColor(Color.WHITE);
         }
         int thurs = vendorInfo.getThurs();
         if (thurs == 1) {
-            holder.thursday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange_500));
+            holder.thursday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
             holder.thursday.setTextColor(Color.WHITE);
         }
         int fri = vendorInfo.getFri();
         if (fri == 1) {
-            holder.friday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange_500));
+            holder.friday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
             holder.friday.setTextColor(Color.WHITE);
         }
         int sat = vendorInfo.getSat();
         if (sat == 1) {
-            holder.saturday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange_500));
+            holder.saturday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
             holder.saturday.setTextColor(Color.WHITE);
         }
         int sun = vendorInfo.getSun();
         if (sun == 1) {
-            holder.sunday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange_500));
+            holder.sunday.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
             holder.sunday.setTextColor(Color.WHITE);
         }
 
@@ -264,7 +203,7 @@ public class VendorInfoAdapter extends RecyclerView.Adapter<VendorInfoAdapter.Ve
 
     public class VendorHolder extends RecyclerView.ViewHolder {
         TextView address,website,mail,instotution_name, button,time;
-        ImageView logo,rating_img,f1,f2,f3,f4,e,e1,e2,e3,e4;
+        ImageView logo;
 
         TextView instagram,facebook,twitter,youtube,test;
 
@@ -278,6 +217,8 @@ public class VendorInfoAdapter extends RecyclerView.Adapter<VendorInfoAdapter.Ve
         ImageGlobals shareData1 = ImageGlobals.getInstance();
 
 
+
+        TextView lw,le,lod,loh,la;
         RelativeLayout r1,r2,r3,r4,r5,r6,r7,r8;
 
         private GoogleMap mMap;
@@ -285,18 +226,7 @@ public class VendorInfoAdapter extends RecyclerView.Adapter<VendorInfoAdapter.Ve
             super(itemView);
 
             button = itemView.findViewById(R.id.chat_now_btn);
-            instotution_name = itemView.findViewById(R.id.ven_name_tittle);
-            logo = itemView.findViewById(R.id.ven_logo_fragment);
-            rating_img = itemView.findViewById(R.id.rating_img);
-            f1 = itemView.findViewById(R.id.rating_img_1);
-            f2 = itemView.findViewById(R.id.rating_img_2);
-            f3 = itemView.findViewById(R.id.rating_img_3);
-            f4 = itemView.findViewById(R.id.rating_img_4);
-            e = itemView.findViewById(R.id.rating_img_empty);
-            e1 = itemView.findViewById(R.id.rating_img_empty_1);
-            e2 = itemView.findViewById(R.id.rating_img_empty_2);
-            e3= itemView.findViewById(R.id.rating_img_empty_3);
-            e4 = itemView.findViewById(R.id.rating_img_empty_4);
+
 
             monday = itemView.findViewById(R.id.m);
             tuesday = itemView.findViewById(R.id.t);
@@ -337,11 +267,24 @@ public class VendorInfoAdapter extends RecyclerView.Adapter<VendorInfoAdapter.Ve
             r8 = itemView.findViewById(R.id.sos_8);
 
 
+            lw= itemView.findViewById(R.id.w1);
+            le= itemView.findViewById(R.id.e1);
+            lod=itemView.findViewById(R.id.od1);
+            loh=itemView.findViewById(R.id.oh1);
+            la=itemView.findViewById(R.id.add1);
 
+            SharedPreferences sharedPreferences1 = context.getApplicationContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+            language = sharedPreferences1.getString("Language_select","");
+            Log.i("Language_main_activity",language);
 
-
-
-
+            if (language.equals("Indonesia"))
+            {
+                lw.setText("Kategori");
+                le.setText("Pilih disini");
+                lod.setText("Hari Operasi");
+                loh.setText("Jam Operasi");
+                la.setText("Alamat");
+            }
 
         }
 

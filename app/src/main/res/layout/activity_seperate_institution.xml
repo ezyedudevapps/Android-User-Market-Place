@@ -6,13 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".SeperateInstitution">
 
+    <RelativeLayout
+        android:id="@+id/insti_top_rel"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/ezy"
+        >
+
+        <ImageView
+            android:id="@+id/bk_rel"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_left_arrow_white"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="25sp"
+            />
+        <ImageView
+            android:id="@+id/bk1_rel"
+            android:layout_width="40dp"
+            android:layout_height="23dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_bookmark_white"
+            android:layout_toLeftOf="@+id/share_img"
+            android:visibility="gone"
+            />
+        <ImageView
+            android:id="@+id/bookmarked_img"
+            android:layout_width="40dp"
+            android:layout_height="33dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_bookmark_2"
+            android:layout_toLeftOf="@+id/share_img"
+            android:visibility="gone"
+            />
+        <ImageView
+            android:id="@+id/share_img"
+            android:layout_width="40dp"
+            android:layout_height="23dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_share_white"
+            android:layout_toLeftOf="@+id/cart_rel"
+            />
+        <ImageView
+            android:id="@+id/chat_rel"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_vendor_chat"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15sp"
+            />
+        <ImageView
+            android:id="@+id/cart_rel"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_cart_white"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/chat_rel"
+            />
+    </RelativeLayout>
     <com.smarteist.autoimageslider.SliderView
         android:id="@+id/slider_view"
+        android:layout_below="@+id/insti_top_rel"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:sliderScrollTimeInSec="3"
         app:sliderStartAutoCycle="true"
-        android:layout_marginTop="5sp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10sp"

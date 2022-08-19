@@ -63,6 +63,7 @@ public class fragment_insti_3 extends Fragment {
     ImageGlobals shareData1 = ImageGlobals.getInstance();
     String img_url_base;
 
+    String language = null;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
@@ -76,6 +77,14 @@ public class fragment_insti_3 extends Fragment {
         String url = base +Vendor_id+end;
         Log.i("url_frag_3",url);
 
+        SharedPreferences sharedPreferences1 = getContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+
+        if (language.equals("Indonesia"))
+        {
+            t1.setText("Tidak Ada Feed Ditemukan");
+        }
         fetchData(url);
 
     }

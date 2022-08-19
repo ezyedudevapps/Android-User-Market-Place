@@ -38,7 +38,11 @@ public class Payment_webPage extends AppCompatActivity {
 
     String session_id = null;
     RequestQueue requestQueue;
-    String TPR,CardNumber,CardHolderName,ExpMonth,ExpYear,CVV,pay_type,pay_month;
+    String TPR,CardNumber,CardHolderName,ExpMonth,ExpYear,CVV,pay_type,pay_month,billing_address,billing_postal_code;
+    String new_timestamp;
+    String new_imId;
+    String new_referenceNo;
+    String new_merchantoken;
     Double price = 0.0;
     WebView webView;
     private ProgressDialog LoadingBar;
@@ -83,6 +87,15 @@ public class Payment_webPage extends AppCompatActivity {
         CVV = bundle.getString("CVV");
         pay_type = bundle.getString("payType");
         pay_month = bundle.getString("payMonth");
+
+        new_timestamp = bundle.getString("timestamp");
+        new_imId =  bundle.getString("imId");
+        new_referenceNo =  bundle.getString("referenceNo");
+        new_merchantoken = bundle.getString("merchantoken");
+        billing_address = getIntent().getStringExtra("billing_address");
+        billing_postal_code = getIntent().getStringExtra("billing_postal_code");
+
+
         Log.i("TotalValues",bundle.toString());
 
         Log.i("ValuesToSend",TPR+" "+CardNumber+" "+CardHolderName+" "+ExpMonth+" "+CVV+" "+ExpYear);
@@ -94,11 +107,19 @@ public class Payment_webPage extends AppCompatActivity {
         LoadingBar.setCanceledOnTouchOutside(false);
         LoadingBar.show();
 
+
         try {
+            RegisterCard(new_timestamp,new_imId,new_referenceNo,TPR,new_merchantoken);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+     /*   try {
             RegisterPayment();
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+      */
 
     }
 
@@ -123,7 +144,7 @@ public class Payment_webPage extends AppCompatActivity {
                     String amt = jsonObject1.getString("amt");
                     String merchantoken = jsonObject1.getString("merchantoken");
 
-                    RegisterCard(timestamp,imId,referenceNo,amt,merchantoken);
+                 //   RegisterCard(timestamp,imId,referenceNo,amt,merchantoken);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -151,7 +172,7 @@ public class Payment_webPage extends AppCompatActivity {
 
     private void RegisterCard(String timestamp, String imId, String referenceNo, String amt, String merchantoken) throws JSONException {
         //dev
-      //  String url = " https://dev.nicepay.co.id/nicepay/direct/v2/registration";
+      //  String url = "https://dev.nicepay.co.id/nicepay/direct/v2/registration";
         //prod
         String url = "https://staging.nicepay.co.id/nicepay/direct/v2/registration";
         JSONObject jsonObject =  new JSONObject();
@@ -186,10 +207,10 @@ public class Payment_webPage extends AppCompatActivity {
         jsonObject.put( "billingPhone", "08994142339");
         jsonObject.put("billingPhone", "08994142339");
         jsonObject.put( "billingEmail", "dewantara.tirta@gmail.com");
-        jsonObject.put( "billingAddr", "Jl. Perumnas");
+        jsonObject.put( "billingAddr", billing_address);
         jsonObject.put("billingCity", "Bandung");
         jsonObject.put("billingState", "Jawa Barat");
-        jsonObject.put("billingPostCd", "55281");
+        jsonObject.put("billingPostCd", billing_postal_code);
         jsonObject.put( "billingCountry", "Indonesia");
         jsonObject.put("deliveryNm", "John Doe");
         jsonObject.put("deliveryPhone", "08994142339");
@@ -224,7 +245,7 @@ public class Payment_webPage extends AppCompatActivity {
     @SuppressLint("SetJavaScriptEnabled")
     private void RedirectToWeb(String timestamp, String tXid, String merchantoken) {
         //dev
-    //    String url = "   https://dev.nicepay.co.id/nicepay/direct/v2/payment?timeStamp=" + timestamp + "&tXid=" + tXid + "&merchantToken=" + merchantoken + "&cardNo="+CardNumber+"&cardExpYymm="+ExpYear+ExpMonth+"&cardCvv="+CVV+"&cardHolderNm="+CardHolderName+"&recurringToken=&preauthToken=&clickPayNo=&dataField3=&clickPayToken=&callBackUrl=https://merchant.com/callBackUrl";
+      //  String url = "https://dev.nicepay.co.id/nicepay/direct/v2/payment?timeStamp=" + timestamp + "&tXid=" + tXid + "&merchantToken=" + merchantoken + "&cardNo="+CardNumber+"&cardExpYymm="+ExpYear+ExpMonth+"&cardCvv="+CVV+"&cardHolderNm="+CardHolderName+"&recurringToken=&preauthToken=&clickPayNo=&dataField3=&clickPayToken=&callBackUrl=https://merchant.com/callBackUrl";
         //prod
         String url = "https://staging.nicepay.co.id/nicepay/direct/v2/payment?timeStamp=" + timestamp + "&tXid=" + tXid + "&merchantToken=" + merchantoken + "&cardNo="+CardNumber+"&cardExpYymm="+ExpYear+ExpMonth+"&cardCvv="+CVV+"&cardHolderNm="+CardHolderName+"&recurringToken=&preauthToken=&clickPayNo=&dataField3=&clickPayToken=&callBackUrl=https://merchant.com/callBackUrl";
         Log.i("Url_to_pass", url);

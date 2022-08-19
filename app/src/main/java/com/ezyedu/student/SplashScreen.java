@@ -47,18 +47,44 @@ public class SplashScreen extends AppCompatActivity {
         if (uri != null)
         {
             List<String> params = uri.getPathSegments();
-            String id = params.get(params.size()-1);
-            Log.i("DeepLinkID",id);
+            String type = params.get(params.size()-2);
 
-            Intent intent11 = new Intent(SplashScreen.this,Course_one_new.class);
-            intent11.putExtra("id",id);
-            startActivity(intent11);
+            if (type.equals("courses"))
+            {
+                String id = params.get(params.size()-1);
 
+                Log.i("DeepLinkID",id);
+
+                Intent intent11 = new Intent(SplashScreen.this,Course_one_new.class);
+                intent11.putExtra("id",id);
+                startActivity(intent11);
+            }
+            else if (type.equals("blog"))
+            {
+                String id = params.get(params.size()-1);
+
+                Log.i("DeepLinkID",id);
+
+                Intent intent11 = new Intent(SplashScreen.this,Article_details_activity.class);
+                intent11.putExtra("id",id);
+                startActivity(intent11);
+            }
+            else if (type.equals("vendor"))
+            {
+                String id = params.get(params.size()-1);
+                Log.i("DeepLinkID",id);
+                Intent intent11 = new Intent(SplashScreen.this,SeperateInstitution.class);
+                intent11.putExtra("ven_id",id);
+                startActivity(intent11);
+            }
         }
         else
         {
             Intent intent1 = new Intent(SplashScreen.this,MainActivity.class);
-            startActivity(intent1);
+           startActivity(intent1);
+
+            //Intent intent1 = new Intent(SplashScreen.this,New_Checkout_Page.class);
+           // startActivity(intent1);
         }
     }
 

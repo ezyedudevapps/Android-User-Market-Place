@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ezyedu.student.R;
@@ -13,6 +14,8 @@ import com.ezyedu.student.model.Globals;
 import com.ezyedu.student.model.ImageGlobals;
 import com.ezyedu.student.model.VenSliderImages;
 import com.smarteist.autoimageslider.SliderViewAdapter;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +44,69 @@ public class VenSliderAdp extends SliderViewAdapter<VenSliderAdp.Holder> {
         VenSliderImages a = venSliderImagesList.get(position);
         String img_url = "https://dpzt0fozg75zu.cloudfront.net/";
         Glide.with(context).load(img_url_base+a.getImage()).into(viewHolder.imageView);
+
+        Glide.with(context).load(img_url_base+a.getLogo()).into(viewHolder.logo);
+        viewHolder.textView.setText(a.getTittle());
+
+        int star = a.getRating();
+
+        if (star == 0)
+        {
+            viewHolder.e.setVisibility(View.VISIBLE);
+            viewHolder.e1.setVisibility(View.VISIBLE);
+            viewHolder.e2.setVisibility(View.VISIBLE);
+            viewHolder.e3.setVisibility(View.VISIBLE);
+            viewHolder.e4.setVisibility(View.VISIBLE);
+        }
+        else if (star == 1)
+        {
+            viewHolder.rating_img.setVisibility(View.VISIBLE);
+            viewHolder.e1.setVisibility(View.VISIBLE);
+            viewHolder.e2.setVisibility(View.VISIBLE);
+            viewHolder.e3.setVisibility(View.VISIBLE);
+            viewHolder.e4.setVisibility(View.VISIBLE);
+        }
+        else if (star == 2 )
+        {
+            viewHolder.rating_img.setVisibility(View.VISIBLE);
+            viewHolder.f1.setVisibility(View.VISIBLE);
+            viewHolder.e2.setVisibility(View.VISIBLE);
+            viewHolder.e3.setVisibility(View.VISIBLE);
+            viewHolder.e4.setVisibility(View.VISIBLE);
+        }
+        else if (star == 3)
+        {
+            viewHolder.rating_img.setVisibility(View.VISIBLE);
+            viewHolder.f1.setVisibility(View.VISIBLE);
+            viewHolder.f2.setVisibility(View.VISIBLE);
+            viewHolder.e3.setVisibility(View.VISIBLE);
+            viewHolder.e4.setVisibility(View.VISIBLE);
+        }
+        else if (star == 4)
+        {
+            viewHolder.rating_img.setVisibility(View.VISIBLE);
+            viewHolder.f1.setVisibility(View.VISIBLE);
+            viewHolder.f2.setVisibility(View.VISIBLE);
+            viewHolder.f3.setVisibility(View.VISIBLE);
+            viewHolder.e4.setVisibility(View.VISIBLE);
+        }
+        else if (star == 5)
+        {
+            viewHolder.rating_img.setVisibility(View.VISIBLE);
+            viewHolder.f1.setVisibility(View.VISIBLE);
+            viewHolder.f2.setVisibility(View.VISIBLE);
+            viewHolder.f3.setVisibility(View.VISIBLE);
+            viewHolder.f4.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            viewHolder.rating_img.setVisibility(View.VISIBLE);
+            viewHolder.f1.setVisibility(View.VISIBLE);
+            viewHolder.f2.setVisibility(View.VISIBLE);
+            viewHolder.f3.setVisibility(View.VISIBLE);
+            viewHolder.f4.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @Override
@@ -49,7 +115,9 @@ public class VenSliderAdp extends SliderViewAdapter<VenSliderAdp.Holder> {
     }
 
     public class Holder extends SliderViewAdapter.ViewHolder {
-        ImageView imageView;
+        ImageView imageView,logo;
+        TextView textView;
+        ImageView rating_img,f1,f2,f3,f4,e,e1,e2,e3,e4;
 
         //retrive base url
         Globals sharedData = Globals.getInstance();
@@ -62,6 +130,8 @@ public class VenSliderAdp extends SliderViewAdapter<VenSliderAdp.Holder> {
         public Holder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_course);
+            logo = itemView.findViewById(R.id.ven_logo_new);
+            textView = itemView.findViewById(R.id.txt_artiles);
 
             //get domain url
             base_app_url = sharedData.getValue();
@@ -71,6 +141,17 @@ public class VenSliderAdp extends SliderViewAdapter<VenSliderAdp.Holder> {
             img_url_base = shareData1.getIValue();
             Log.i("img_url_global",img_url_base);
 
+
+            rating_img = itemView.findViewById(R.id.rating_img);
+            f1 = itemView.findViewById(R.id.rating_img_1);
+            f2 = itemView.findViewById(R.id.rating_img_2);
+            f3 = itemView.findViewById(R.id.rating_img_3);
+            f4 = itemView.findViewById(R.id.rating_img_4);
+            e = itemView.findViewById(R.id.rating_img_empty);
+            e1 = itemView.findViewById(R.id.rating_img_empty_1);
+            e2 = itemView.findViewById(R.id.rating_img_empty_2);
+            e3= itemView.findViewById(R.id.rating_img_empty_3);
+            e4 = itemView.findViewById(R.id.rating_img_empty_4);
         }
     }
 }

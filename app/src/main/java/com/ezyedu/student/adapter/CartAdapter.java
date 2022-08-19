@@ -2,6 +2,7 @@ package com.ezyedu.student.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bumptech.glide.Glide;
+import com.ezyedu.student.Login_Activity;
 import com.google.gson.Gson;
 import com.ezyedu.student.Cart_Activity;
 import com.ezyedu.student.R;
@@ -53,6 +55,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>
     Double price = 0.0;
     Double Total_price = 0.0;
     SharedPreferences sp,sp1;
+
+    ProgressDialog progressDialog;
 
     public  static String img_url_base;
     public static  String base_app_url;
@@ -90,6 +94,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>
         Total_price = Total_price+a.getPrice();
         Log.i("Total_price_cart", String.valueOf(Total_price));
         Log.i("Total_cart_price", String.valueOf(Total_price));
+
+        Log.i("TotCount", String.valueOf(count[0]));
         holder.decrement_btn.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -97,6 +103,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>
                 if (!(count[0] <=1))
                 {
                     count[0]--;
+                    Log.i("TotCount", String.valueOf(count[0]));
+                    try {
+                        progressDialog = new ProgressDialog(context);
+                        progressDialog.show();
+                        progressDialog.setContentView(R.layout.progress_dialog);
+                        progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+                        updateCartQty(a.getCourse_hash_id(),count[0]);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                     holder.count_btn.setText(""+ count[0]);
                     price = a.getPrice();
                     holder.price.setText("Rp"+ count[0] *a.getPrice());
@@ -120,6 +136,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>
             @Override
             public void onClick(View v) {
                 count[0]++;
+                Log.i("TotCount", String.valueOf(count[0]));
+                try {
+                    progressDialog = new ProgressDialog(context);
+                    progressDialog.show();
+                    progressDialog.setContentView(R.layout.progress_dialog);
+                    progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+                    updateCartQty(a.getCourse_hash_id(),count[0]);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 holder.count_btn.setText(""+ count[0]);
                 price = a.getPrice();
                 holder.price.setText("Rp"+ count[0] *a.getPrice());
@@ -187,6 +213,45 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>
 
         }
 
+    private void updateCartQty(String course_hash_id, int i) throws JSONException {
+        String url = base_app_url+"/api/user/cart-qty";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("course_id",course_hash_id);
+        jsonObject.put("qty",i);
+        Log.i("qtyJson",jsonObject.toString());
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    String message = response.getString("message");
+                    if (message.equals("qty added"))
+                    {
+                        progressDialog.dismiss();
+                        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/json");
+                params.put("Authorization",session_id);
+                return params;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+
     private void removeCart(String session_id, String hash) throws JSONException {
         String url = base_app_url+"api/user/cart";
 
@@ -243,6 +308,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>
     public class CartHolder extends RecyclerView.ViewHolder{
         TextView institution,remove,tittle,date,price,decrement_btn,increment_btn,count_btn;
         ImageView imageView;
+
 
 
         //retrive base url

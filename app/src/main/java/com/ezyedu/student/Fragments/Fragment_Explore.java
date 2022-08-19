@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,15 +24,23 @@ import com.ezyedu.student.MapActivity;
 import com.ezyedu.student.NearMe_Activity;
 import com.ezyedu.student.R;
 import com.ezyedu.student.SearchActivity;
+import com.ezyedu.student.Search_Course_Activity;
 import com.ezyedu.student.model.Globals;
 import com.ezyedu.student.model.ImageGlobals;
 
+import java.util.Objects;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 public class Fragment_Explore extends Fragment{
 
-    Button r1,r2,r3;
+    RelativeLayout r1,r2,r3;
 
     String session_id = null;
     SharedPreferences sharedPreferences;
+
+
+    TextView i,c,n;
+    String language = null;
 
 
     //retrive base url
@@ -47,6 +57,17 @@ public class Fragment_Explore extends Fragment{
         sharedPreferences = getContext().getSharedPreferences("Session_id", Context.MODE_PRIVATE);
         session_id = sharedPreferences.getString("session_val","");
         Log.i("Session_Histry_activity",session_id);
+
+        SharedPreferences sharedPreferences1 = getContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+
+        if (language.equals("Indonesia"))
+        {
+            i.setText("Institusi");
+            c.setText("Kursus");
+            n.setText("Sekitar Saya");
+        }
     }
 
     @Override
@@ -57,12 +78,16 @@ public class Fragment_Explore extends Fragment{
 
         //get domain url
         base_app_url = sharedData.getValue();
-        Log.i("domain_url",base_app_url);
+//        Log.i("domain_url",base_app_url);
 
         //get image loading url
         img_url_base = shareData1.getIValue();
-        Log.i("img_url_global",img_url_base);
+       // Log.i("img_url_global",img_url_base);
 
+
+        i = view.findViewById(R.id.ei1);
+        c = view.findViewById(R.id.ec2);
+        n = view.findViewById(R.id.en3);
 
         r1 = view.findViewById(R.id.institu_btn);
         r2 = view.findViewById(R.id.rr2);
@@ -71,13 +96,12 @@ public class Fragment_Explore extends Fragment{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), Institution_Groups.class));
-                
             }
         });
         r2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), SearchActivity.class));
+                startActivity(new Intent(getActivity(), Search_Course_Activity.class));
             }
         });
         r3.setOnClickListener(new View.OnClickListener() {
@@ -87,10 +111,9 @@ public class Fragment_Explore extends Fragment{
                 {
                     Toast.makeText(getContext(), "Please Login to Continue", Toast.LENGTH_SHORT).show();
                 }
-                else
-                {
-                    startActivity(new Intent(getActivity(), NearMe_Activity.class));
-
+                else {
+                    Intent intent1 = (new Intent(getActivity(), MapActivity.class));
+                    startActivity(intent1);
                 }
 
             }

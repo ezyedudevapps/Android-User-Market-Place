@@ -10,14 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.ezyedu.student.MainActivity;
+import com.ezyedu.student.gmail_register;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -28,6 +35,9 @@ import com.google.android.gms.tasks.Task;
 import com.ezyedu.student.R;
 import com.ezyedu.student.model.Globals;
 import com.ezyedu.student.model.ImageGlobals;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class Gmail_Login_Fragment extends Fragment {
@@ -78,6 +88,7 @@ public class Gmail_Login_Fragment extends Fragment {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
+
         mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
         // Check for existing Google Sign In account, if the user is already signed in
 // the GoogleSignInAccount will be non-null.
@@ -102,10 +113,9 @@ public class Gmail_Login_Fragment extends Fragment {
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        //google sign in....
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             // The Task returned from this call is always completed, no need to attach
@@ -113,7 +123,6 @@ public class Gmail_Login_Fragment extends Fragment {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
-
     }
 
     private void handleSignInResult(Task<GoogleSignInAccount> task)
@@ -133,7 +142,7 @@ public class Gmail_Login_Fragment extends Fragment {
                 Toast.makeText(getActivity(), "Sign-In Success", Toast.LENGTH_SHORT).show();
                 if (personId != null)
                 {
-                 //   gmailLogin(personId,personEmail);
+                   gmailLogin(personId,personEmail);
                     //logout...
                     mGoogleSignInClient.signOut();
                 }
@@ -141,7 +150,7 @@ public class Gmail_Login_Fragment extends Fragment {
 
             }
 
-        } catch (ApiException e) {
+        } catch (ApiException | JSONException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.d("Gmailmessage",e.toString());
@@ -150,6 +159,61 @@ public class Gmail_Login_Fragment extends Fragment {
     }
 
 
+    private void gmailLogin(String personId, String personEmail) throws JSONException {
+        String url = base_app_url+"api/auth/login-social";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("provider","google");
+        jsonObject.put("provider_id",personId);
+        jsonObject.put("email",personEmail);
+        jsonObject.put("role",3);
+        Log.i("JSONBJ",jsonObject.toString());
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response)
+            {
+                Log.i("ResponseFB",response.toString());
+
+                try {
+                    String session = response.getString("session");
+                    Log.i("sessionLogged",session);
+
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("session_val",session);
+                    editor.commit();
+                    if (!TextUtils.isEmpty(session))
+                    {
+                        Intent intent1 = new Intent(getContext(), MainActivity.class);
+                        startActivity(intent1);
+                    }
+                    else
+                    {
+                        Intent intent1 = new Intent(getContext(), gmail_register.class);
+                        intent1.putExtra("provider_id",personId);
+                        intent1.putExtra("email",personEmail);
+                        startActivity(intent1);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                Log.i("error",error.toString());
+                Toast.makeText(getContext(), "Please Register to Continue", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(getContext(), gmail_register.class);
+                intent1.putExtra("provider_id",personId);
+                intent1.putExtra("email",personEmail);
+                startActivity(intent1);
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+
+    }
 
 
 

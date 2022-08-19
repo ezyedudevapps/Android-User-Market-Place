@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_ezy"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -12,18 +13,15 @@
         android:layout_height="115sp"
         android:background="@drawable/img_sign_background"
         >
-        <TextView
-            android:id="@+id/welcome_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="WELCOME"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:typeface="serif"
-            android:textColor="@color/white"
-            android:textStyle="normal"
-            android:textSize="20sp"/>
 
+        <ImageView
+            android:id="@+id/welcome_text"
+            android:layout_width="160dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/img_ezyedu_text_logo"
+            />
 
         <ImageButton
             android:id="@+id/chat_list"
@@ -88,25 +86,45 @@
                 >
             </androidx.recyclerview.widget.RecyclerView>
 
-            <TextView
-                android:id="@+id/sttr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:text="Starting Soon"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:visibility="gone"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/crs_des"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Courses that will start soon"
-                android:layout_marginStart="15dp"
-                android:visibility="gone"
-                android:textStyle="bold"/>
+                >
+
+                <TextView
+                    android:id="@+id/sttr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Starting Soon"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="gone"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/view_all_course"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="13dp"
+                    android:text="View all"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/orange"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/crs_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Courses that will start soon"
+                    android:layout_marginStart="15dp"
+                    android:visibility="gone"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
 
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:layout_width="match_parent"
@@ -186,27 +204,45 @@
                 android:orientation="horizontal"
                 android:visibility="visible"
                 />
-            <TextView
-                android:id="@+id/inst_ttl"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Institution"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:visibility="gone"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-            />
-            <TextView
-                android:id="@+id/inst_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ut enim ad minim veniam"
-                android:layout_marginStart="15dp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                />
+                >
+                <TextView
+                    android:id="@+id/inst_ttl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Institutions"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:visibility="gone"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    />
+                <TextView
+                    android:id="@+id/view_all_insti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="13dp"
+                    android:text="View all"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/orange"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/inst_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ut enim ad minim veniam"
+                    android:layout_marginStart="15dp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    />
+
+            </RelativeLayout>
 
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:layout_width="match_parent"
@@ -232,32 +268,51 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="5dp"
                 android:id="@+id/recycle_institution"
                 android:visibility="visible"
                 />
 
-            <TextView
-                android:id="@+id/art_ttl"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Articles"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:visibility="gone"
-                />
-            <TextView
-                android:id="@+id/art_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ut enim ad minim veniam"
-                android:layout_marginStart="15dp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                />
+                >
+
+                <TextView
+                    android:id="@+id/art_ttl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Articles"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    />
+                <TextView
+                    android:id="@+id/view_all_article"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="13dp"
+                    android:text="View all"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/orange"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/art_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ut enim ad minim veniam"
+                    android:layout_marginStart="15dp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    />
+
+            </RelativeLayout>
+
 
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:layout_width="match_parent"
@@ -281,7 +336,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="5dp"
                 android:layout_marginEnd="16sp"
                 android:id="@+id/home_page_recyc_5"
                 />
@@ -290,6 +344,15 @@
     </ScrollView>
 
 
+
+    <ImageView
+        android:id="@+id/straight_to_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rel_1"
+        android:layout_marginBottom="-10sp"
+        android:src="@drawable/straight_line"
+        />
 
     <RelativeLayout
         android:id="@+id/rel_1"
@@ -306,7 +369,7 @@
             android:layout_alignParentBottom="true"
             android:text="Home"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
         <ImageView
             android:id="@+id/home_btn"
             android:layout_width="40dp"
@@ -331,7 +394,7 @@
             android:text="Explore"
             android:layout_alignParentBottom="true"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
 
         <ImageView
@@ -362,7 +425,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="20dp"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
 
         <ImageView
@@ -370,7 +433,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_above="@id/ms_livia_text"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="25dp"
             android:src="@drawable/ic_ms_livia" />
     </RelativeLayout>
 
@@ -392,16 +455,16 @@
             android:layout_height="wrap_content"
             android:text="Cart"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="32dp"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <ImageView
             android:id="@+id/cart_btn"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_cart"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="30dp"
             android:layout_above="@id/Cart_text"/>
     </RelativeLayout>
 
@@ -413,7 +476,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="35sp"
+        android:layout_marginEnd="15sp"
         android:layout_alignParentEnd="true"
         >
 
@@ -423,16 +486,15 @@
             android:layout_height="wrap_content"
             android:text="Others"
             android:layout_alignParentBottom="true"
-
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <ImageView
             android:id="@+id/others_btn"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_others"
-
+            android:layout_marginStart="5dp"
             android:layout_above="@id/Others_text"/>
     </RelativeLayout>
 

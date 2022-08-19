@@ -83,6 +83,7 @@ public class SearchArticles extends Fragment {
         img_url_base = shareData1.getIValue();
         Log.i("img_url_global",img_url_base);
 
+        linearLayout = view.findViewById(R.id.ln_crse);
 
 
         editText = view.findViewById(R.id.search_articles_edit);
@@ -147,8 +148,6 @@ public class SearchArticles extends Fragment {
                     JSONArray jsonArray = response.getJSONArray("data");
 
                     if (jsonArray.length()>0) {
-
-
                         Log.i("jsonval", String.valueOf(response));
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -168,7 +167,7 @@ public class SearchArticles extends Fragment {
                     }
                     else
                     {
-                        linearLayout.setVisibility(View.VISIBLE);
+                      //  linearLayout.setVisibility(View.VISIBLE);
                     }
                     recyclerView.getAdapter().notifyDataSetChanged();
                 } catch (JSONException e)

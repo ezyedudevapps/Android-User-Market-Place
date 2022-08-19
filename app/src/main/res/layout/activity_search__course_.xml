@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Search_Course_Activity">
+
+
+    <RelativeLayout
+        android:id="@+id/crs_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ezy_bottom_oval"
+        >
+        <ImageView
+            android:id="@+id/bk_lft_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17sp"
+            android:src="@drawable/ic_left_arrow_white"
+            android:layout_marginStart="10sp"
+            />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/ttl_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Courses"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:layout_marginStart="25sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/bk_lft_arrow"
+            />
+        <EditText
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:id="@+id/search_course_edit"
+            android:hint="Search for Courses"
+            android:visibility="visible"
+            android:textAlignment="center"
+            android:layout_marginStart="15sp"
+            android:layout_marginEnd="15sp"
+            android:layout_marginBottom="15sp"
+            android:background="@drawable/white_oval"
+            android:padding="5dp"
+            android:layout_below="@+id/ttl_top"
+            />
+
+    </RelativeLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/ln_crse"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/i11"
+            android:layout_width="190sp"
+            android:visibility="visible"
+            android:layout_height="190sp"
+            android:src="@drawable/empty_history"
+            android:layout_marginTop="50sp"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:id="@+id/t11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Courses Found"
+            android:visibility="visible"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10sp"
+            android:layout_gravity="center_horizontal"
+            />
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:id="@+id/search_course_recycler"
+        android:layout_below="@+id/crs_top"
+        />
+
+</RelativeLayout>

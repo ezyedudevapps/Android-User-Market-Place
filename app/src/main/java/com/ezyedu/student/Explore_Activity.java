@@ -12,6 +12,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
@@ -27,6 +29,7 @@ public class Explore_Activity extends AppCompatActivity {
     exp_fragment_adapter adapter;
     String session_id = null;
 
+    TextView search,explore_head;
 
 
     //retrive base url
@@ -37,7 +40,10 @@ public class Explore_Activity extends AppCompatActivity {
     ImageGlobals shareData1 = ImageGlobals.getInstance();
     String img_url_base;
 
+    RelativeLayout rhome,rchat,rexp,rcart,rothers;
 
+    String language = null;
+    TextView hom,ms,exp,crt,othrs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,13 +52,45 @@ public class Explore_Activity extends AppCompatActivity {
 
         //get domain url
         base_app_url = sharedData.getValue();
-        Log.i("domain_url",base_app_url);
+//        Log.i("domain_url",base_app_url);
 
         //get image loading url
         img_url_base = shareData1.getIValue();
-        Log.i("img_url_global",img_url_base);
+  //      Log.i("img_url_global",img_url_base);
 
 
+        hom = findViewById(R.id.home_txt);
+        ms = findViewById(R.id.ms_livia_text);
+        exp = findViewById(R.id.explore_txt);
+        crt = findViewById(R.id.Cart_text);
+        othrs = findViewById(R.id.Others_text);
+
+
+        search = findViewById(R.id.search_all_ed);
+        explore_head = findViewById(R.id.exp_head);
+
+        SharedPreferences sharedPreferences1 = getApplicationContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+
+        if (language.equals("Indonesia"))
+        {
+            hom.setText("Beranda");
+            ms.setText("Ms.Livia");
+            exp.setText("Explore");
+            crt.setText("Keranjang");
+            othrs.setText("Lainya");
+            explore_head.setText("Explorasi");
+            search.setText("Cari Kursus, Institusi, dan lainya");
+        }
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(Explore_Activity.this,SearchActivity.class);
+                startActivity(intent1);
+            }
+        });
 
         tableLayout = findViewById(R.id.tab1);
         pager2 = findViewById(R.id.view_p);
@@ -80,10 +118,19 @@ public class Explore_Activity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         adapter = new exp_fragment_adapter(fragmentManager,getLifecycle());
         pager2.setAdapter(adapter);
+        if (language.equals("Indonesia"))
+        {
+            tableLayout.addTab(tableLayout.newTab().setText("Explorasi"));
+            tableLayout.addTab(tableLayout.newTab().setText("Promosi"));
+            tableLayout.addTab(tableLayout.newTab().setText("Artikel"));
+        }
+        else
+        {
+            tableLayout.addTab(tableLayout.newTab().setText("Explore"));
+            tableLayout.addTab(tableLayout.newTab().setText("Promos"));
+            tableLayout.addTab(tableLayout.newTab().setText("Articles"));
+        }
 
-        tableLayout.addTab(tableLayout.newTab().setText("Explore"));
-        tableLayout.addTab(tableLayout.newTab().setText("Promos"));
-        tableLayout.addTab(tableLayout.newTab().setText("Articles"));
 
         tableLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -106,6 +153,42 @@ public class Explore_Activity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 tableLayout.selectTab(tableLayout.getTabAt(position));
+            }
+        });
+
+        //rel layout bottom nav
+        rhome = findViewById(R.id.rel_1);
+        rchat = findViewById(R.id.rel_chat);
+        rexp = findViewById(R.id.rel_cen);
+        rcart = findViewById(R.id.rel_cart);
+        rothers = findViewById(R.id.rel_oth);
+
+        rhome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Explore_Activity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        rchat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Explore_Activity.this,ms_livia_activity.class);
+                startActivity(intent);
+            }
+        });
+        rothers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Explore_Activity.this,Others_Activity.class);
+                startActivity(intent);
+            }
+        });
+        rcart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Explore_Activity.this,Cart_Activity.class);
+                startActivity(intent);
             }
         });
     }

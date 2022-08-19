@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,6 +28,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.ezyedu.student.adapter.VendorFacilityAdapter;
+import com.ezyedu.student.adapter.VendorInfo1Adapter;
+import com.ezyedu.student.model.VendorFacilities;
+import com.ezyedu.student.model.VendorInfo1;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -51,14 +56,22 @@ public class fragment_insti_1 extends Fragment implements OnMapReadyCallback
 {
     SharedPreferences ven_id_shared;
    public String ven_id;
-   RecyclerView recyclerView;
+   RecyclerView recyclerView,recyclerView1,recyclerView2;
    VendorInfoAdapter vendorInfoAdapter;
+   VendorInfo1Adapter vendorInfo1Adapter;
+   VendorFacilityAdapter vendorFacilityAdapter;
    private RequestQueue requestQueue;
    private List<VendorInfo> vendorInfoList = new ArrayList<>();
+   private List<VendorInfo1> vendorInfo1List = new ArrayList<>();
+   private List<VendorFacilities> vendorFacilitiesList = new ArrayList<>();
+
    private String tag = "nullmain";
+   TextView textView;
 
     private GoogleMap mMap;
 
+    TextView  locationtext;
+    String language = null;
     String ven_detail_url;
 
 
@@ -88,6 +101,16 @@ public class fragment_insti_1 extends Fragment implements OnMapReadyCallback
      //   fetchData(ven_detail_url);
 
 
+        SharedPreferences sharedPreferences1 = getContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+        if (language.equals("Indonesia"))
+        {
+            locationtext.setText("Lokasi Pinpoint");
+            relativeLayout.setText("Lihat dipeta");
+        }
+
+
     }
 
  /*   private void fetchData(String ven_detail_url)
@@ -113,6 +136,9 @@ public class fragment_insti_1 extends Fragment implements OnMapReadyCallback
         img_url_base = shareData1.getIValue();
         Log.i("img_url_global",img_url_base);
 
+        locationtext = view.findViewById(R.id.loc_txt);
+        relativeLayout = view.findViewById(R.id.opn_map);
+
         progressDialog = new ProgressDialog(getContext());
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
@@ -125,6 +151,18 @@ public class fragment_insti_1 extends Fragment implements OnMapReadyCallback
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(vendorInfoAdapter);
 
+        recyclerView1 = view.findViewById(R.id.ven_cat_desc_recyc);
+        vendorInfo1Adapter = new VendorInfo1Adapter(getContext(),vendorInfo1List);
+        LinearLayoutManager manager1 = new LinearLayoutManager(getContext());
+        recyclerView1.setLayoutManager(manager1);
+        recyclerView1.setAdapter(vendorInfo1Adapter);
+
+        textView = view.findViewById(R.id.text_facility);
+        recyclerView2 = view.findViewById(R.id.ven_facility_recyc);
+        vendorFacilityAdapter = new VendorFacilityAdapter(getContext(),vendorFacilitiesList);
+        LinearLayoutManager manager2 = new LinearLayoutManager(getContext());
+        recyclerView2.setLayoutManager(manager2);
+        recyclerView2.setAdapter(vendorFacilityAdapter);
 
         SupportMapFragment mMapFragment = SupportMapFragment.newInstance();
         FragmentTransaction fragmentTransaction =
@@ -136,7 +174,7 @@ public class fragment_insti_1 extends Fragment implements OnMapReadyCallback
         requestQueue= Volley.newRequestQueue(getContext());
 
 
-        relativeLayout = view.findViewById(R.id.opn_map);
+
 
 
         return view;
@@ -192,7 +230,7 @@ public class fragment_insti_1 extends Fragment implements OnMapReadyCallback
                         {
                             twitter = jsonObject1.getString("url");
                         }
-                       else if (id == 9)
+                       else if (id == 10 || id == 9)
                         {
                             tiktok = jsonObject1.getString("url");
                         }
@@ -234,11 +272,39 @@ public class fragment_insti_1 extends Fragment implements OnMapReadyCallback
                             }
                         }
                     });
+
+
                     VendorInfo post = new VendorInfo(vendor_chat_id,vendor_hash_id,vendor_name,vendor_address,vendor_logo,vendor_email,
                             vendor_phone,website,vendor_image,vendor_rating,is_chatting_allowed,opt,instagram,facebook,twitter,youtube,tiktok,
                     monday,tuesday,wednesday,thursday,friday,saturday,sunday);
                     vendorInfoList.add(post);
                     Objects.requireNonNull(recyclerView.getAdapter()).notifyDataSetChanged();
+
+                    JSONArray jsonArray3 = response.getJSONArray("vendor_category_descriptions");
+                    for (int i = 0;i<jsonArray3.length();i++)
+                    {
+                        JSONObject jsonObject1 = jsonArray3.getJSONObject(i);
+                        String titttle = jsonObject1.getString("title");
+                        String content = jsonObject1.getString("content");
+                        VendorInfo1 post1 = new VendorInfo1(titttle,content);
+                        vendorInfo1List.add(post1);
+                        recyclerView1.getAdapter().notifyDataSetChanged();
+                    }
+
+                    JSONArray jsonArray4 = response.getJSONArray("vendor_facilities");
+                    if (jsonArray4.length() >0)
+                    {
+                        textView.setText("Facilities");
+                    }
+                    for (int i = 0; i<jsonArray4.length();i++)
+                    {
+                        JSONObject jsonObject1 = jsonArray4.getJSONObject(i);
+                        String tittle = jsonObject1.getString("title");
+                        String image = jsonObject1.getString("image");
+                        VendorFacilities post2 = new VendorFacilities(tittle,image);
+                        vendorFacilitiesList.add(post2);
+                        recyclerView2.getAdapter().notifyDataSetChanged();
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -191,7 +191,7 @@
         android:layout_below="@+id/sign_in_fb_btn"
         android:id="@+id/frame_layout"
         android:layout_margin="10dp"
-        android:visibility="gone"
+        android:visibility="visible"
         />
 
     <RelativeLayout

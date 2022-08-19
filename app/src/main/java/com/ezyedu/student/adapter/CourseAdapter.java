@@ -49,7 +49,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseHold
     public void onBindViewHolder(@NonNull CourseHolder holder, int position) {
         courses courses = coursesList.get(position);
 
-            holder.t2.setText(courses.getDuration());
+            holder.t2.setText(courses.getDuration()+ " days");
 
             String date_time = courses.getCccreated_at();
             String [] date_only = date_time.split(" ");

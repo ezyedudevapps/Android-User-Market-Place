@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Filter_Vendor_Groups_Activity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/grp_rel"
+        android:background="@color/orange"
+        >
+
+
+        <RelativeLayout
+            android:id="@+id/ttl_ins_grp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            >
+            <ImageView
+                android:id="@+id/lft_arrrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_left_arrow_white"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="5sp"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Filters"
+                android:layout_marginStart="15sp"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/lft_arrrow"
+
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/grp_rel"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/ct_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:layout_margin="15sp"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            />
+
+        <TextView
+            android:id="@+id/txt_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select Here"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textSize="17dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:drawableEnd="@drawable/drop_down_icon"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/white_oval"
+            android:elevation="5dp"
+            />
+
+
+        <TextView
+            android:id="@+id/sct1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sub-Category"
+            android:layout_margin="15sp"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            />
+
+        <TextView
+            android:id="@+id/txt_sub_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select Here"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textSize="17dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:drawableEnd="@drawable/drop_down_icon"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/white_oval"
+            android:elevation="5dp"
+            />
+
+        <TextView
+            android:id="@+id/sot1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="SORT BY"
+            android:layout_marginStart="15sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="5sp"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            />
+
+        <Spinner
+            android:id="@+id/sort_popup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Default Sort"
+            android:layout_marginEnd="10dp"
+            android:textSize="20dp"
+            android:padding="10dp"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CITY"
+            android:layout_marginStart="15sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="5sp"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:visibility="gone"
+            />
+
+
+
+        <TextView
+            android:id="@+id/txt_citys"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select Here"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textSize="17dp"
+            android:layout_marginTop="15dp"
+            android:padding="10dp"
+            android:drawableEnd="@drawable/drop_down_icon"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/white_oval"
+            android:elevation="5dp"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="PROVINCE"
+            android:layout_marginStart="15sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="5sp"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:visibility="gone"
+            />
+
+
+
+        <TextView
+            android:id="@+id/txt_province"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select Here"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textSize="17dp"
+            android:layout_marginTop="15dp"
+            android:padding="10dp"
+            android:drawableEnd="@drawable/drop_down_icon"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/white_oval"
+            android:elevation="5dp"
+            android:visibility="gone"
+            />
+
+        <Button
+            android:id="@+id/apply_filter_btn"
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:text="Apply"
+            android:layout_gravity="center"
+            android:layout_marginTop="25sp"
+            android:background="@color/orange"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
+
+
+
+    </RelativeLayout>

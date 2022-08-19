@@ -158,6 +158,7 @@ public class SearchCourse extends Fragment
             {
                 try {
                     progressDialog.dismiss();
+                    int current_page = response.getInt("current_page");
                     JSONArray jsonArray = response.getJSONArray("data");
                     if (jsonArray.length()>0) {
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -246,7 +247,7 @@ public class SearchCourse extends Fragment
                             searchCourseList.add(post);
                         }
                     }
-                    else
+                    else if (current_page == 1 & jsonArray.length() == 0)
                     {
                         linearLayout.setVisibility(View.VISIBLE);
                     }
@@ -260,7 +261,8 @@ public class SearchCourse extends Fragment
             public void onErrorResponse(VolleyError error)
             {
                 progressDialog.dismiss();
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                linearLayout.setVisibility(View.VISIBLE);
+              //  Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
         requestQueue.add(jsonObjectRequest);

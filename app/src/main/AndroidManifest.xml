@@ -12,14 +12,26 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Access_User_Location"></activity>
+        <activity android:name=".New_Checkout_Page"></activity>
+        <activity android:name=".New_Payment_Activity" />
+        <activity android:name=".InstallmentPlanActivity" />
+        <activity android:name=".PaymentMethodActivity" />
+        <activity android:name=".Language_activity" />
+        <activity android:name=".Search_Course_Activity" />
+        <activity android:name="com.ezyedu.test_activity" />
+        <activity android:name=".Filtered_Institution_Groups" />
+        <activity android:name=".Filter_Vendor_Groups_Activity" />
+        <activity android:name=".gmail_register" />
+        <activity android:name=".Access_User_Location" />
         <activity android:name=".Change_Password" />
         <activity android:name=".Settings_Activity" />
         <activity android:name=".Terms_Conditions_Activity" />
@@ -41,7 +53,6 @@
         <activity android:name=".History_Page" />
         <activity android:name=".Payment_Response" />
         <activity android:name=".Payment_webPage" />
-        <activity android:name=".Checkout_Page" />
         <activity android:name=".Update_profile_activity" />
         <activity android:name=".My_profile_Activity" />
         <activity android:name=".Chat_List_Activity" />

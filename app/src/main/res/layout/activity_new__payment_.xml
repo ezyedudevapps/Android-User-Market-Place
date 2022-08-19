@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".New_Payment_Activity">
+
+
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="40dp"
+        android:layout_margin="8sp"
+        android:src="@drawable/ic_left_arrow"
+        />
+    <TextView
+        android:id="@+id/p_method"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Payment"
+        android:layout_marginTop="15sp"
+        android:textSize="18sp"
+        android:textColor="@color/orange"
+        android:textStyle="bold"
+        />
+
+
+    <TextView
+        android:id="@+id/p_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/p_method"
+        android:text="Full Payment"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        />
+    <TextView
+        android:id="@+id/t_amt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/p_type"
+        android:text="Full Payment"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="10sp"
+        android:textColor="@color/orange"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        />
+
+
+
+
+
+</RelativeLayout>

@@ -3,6 +3,7 @@ package com.ezyedu.student;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -52,13 +53,15 @@ public class Others_Activity extends AppCompatActivity {
     TextView textView;
     private ProgressDialog progressDialog;
 
-    CardView card_bookmarks,card_bankacccount,card_History,card_referrals,card_settings,card_Logout,card_account;
+    CardView card_languag,card_bookmarks,card_bankacccount,card_History,card_referrals,card_settings,card_Logout,card_account;
 
     //bottom nav....
     RelativeLayout rhome,rchat,rexp,rcart,rothers;
 
 
-
+    TextView lg,ma,bk,hs,st,lgo;
+    String language = null;
+    TextView hom,ms,exp,crt,othrs;
     //retrive base url
     Globals sharedData = Globals.getInstance();
     String base_app_url;
@@ -92,9 +95,50 @@ public class Others_Activity extends AppCompatActivity {
         card_settings = findViewById(R.id.card_settings);
         card_Logout = findViewById(R.id.card_Logout);
         card_account = findViewById(R.id.card_myaccount);
+        card_languag = findViewById(R.id.card_language);
+
+        lg= findViewById(R.id.lng);
+        ma=findViewById(R.id.myc);
+        bk=findViewById(R.id.bmk);
+        hs=findViewById(R.id.hstry);
+        st=findViewById(R.id.stngs);
+        lgo=findViewById(R.id.lgout);
+
+        hom = findViewById(R.id.home_txt);
+        ms = findViewById(R.id.ms_livia_text);
+        exp = findViewById(R.id.explore_txt);
+        crt = findViewById(R.id.Cart_text);
+        othrs = findViewById(R.id.Others_text);
+
+        SharedPreferences sharedPreferences1 = getApplicationContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+
+        if (language.equals("Indonesia"))
+        {
+            hom.setText("Beranda");
+            ms.setText("Ms.Livia");
+            exp.setText("Explore");
+            crt.setText("Keranjang");
+            othrs.setText("Lainya");
 
 
+            lg.setText("Bahasa");
+            ma.setText("Akun Saya");
+            bk.setText("Bookmarks");
+            hs.setText("Sejarah");
+            st.setText("Pengaturan");
+            lgo.setText("Keluar akun");
+        }
 
+
+        card_languag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(Others_Activity.this,Language_activity.class);
+                startActivity(intent1);
+            }
+        });
 
 
 
@@ -278,25 +322,24 @@ card_account.setOnClickListener(new View.OnClickListener() {
     {
         String url = base_app_url+"api/user/profile";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONObject response)
             {
+                Log.i("responseUser",response.toString());
                 progressDialog.dismiss();
-                String name_get = null;
-                if(response.isNull("name"))
-                {
-                    name_get = "Guest";
-                }
-                else
+                if (!response.isNull("name"))
                 {
                     try {
-                        name_get = response.getString("name");
+                        textView.setText(response.getString("name"));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-                textView.setText("Welcome "+name_get);
-
+                else
+                {
+                    textView.setText("Welcome Guest");
+                }
 
                 String img_url = "https://dpzt0fozg75zu.cloudfront.net/";
                 String image_get;
@@ -332,5 +375,11 @@ card_account.setOnClickListener(new View.OnClickListener() {
             }
         };
         requestQueue.add(jsonObjectRequest);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent1 = new Intent(Others_Activity.this,MainActivity.class);
+        startActivity(intent1);
     }
 }

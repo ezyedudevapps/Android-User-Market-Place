@@ -70,8 +70,18 @@ public class InstituteAdapter extends RecyclerView.Adapter<InstituteAdapter.Inst
 
         Double review = institutions.getRating();
         holder.rating.setText(review +"*");
+        if (review != 0.0)
+        {
+            holder.new_rate.setText(String.valueOf(review));
+        }
+
+        if (review == 0.0)
+        {
+            holder.new_rate.setText("");
+        }
 
         holder.total_review.setText(institutions.getTotal_review() + " Ratings");
+
 
 
     }
@@ -83,7 +93,7 @@ public class InstituteAdapter extends RecyclerView.Adapter<InstituteAdapter.Inst
 
     public static class InstituteHolder extends RecyclerView.ViewHolder
     {
-        TextView type,heading,address,rating,total_review;
+        TextView type,heading,address,rating,total_review,new_rate;
         ImageView headImage,a1,a2,a3,a4,a5,b1,b2,b3,b4,b5;
         RelativeLayout relativeLayout;
 
@@ -106,6 +116,8 @@ public class InstituteAdapter extends RecyclerView.Adapter<InstituteAdapter.Inst
             headImage = itemView.findViewById(R.id.institution_image);
 
             relativeLayout = itemView.findViewById(R.id.insti_relative);
+            new_rate = itemView.findViewById(R.id.new_rateing);
+
 
             //get domain url
             base_app_url = sharedData.getValue();

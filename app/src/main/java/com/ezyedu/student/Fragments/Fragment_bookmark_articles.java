@@ -122,6 +122,7 @@ b1.setOnClickListener(new View.OnClickListener() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                Log.i("responseBkArti",response.toString());
                 try {
                     progressDialog.dismiss();
                     String message = response.getString("message");

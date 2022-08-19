@@ -366,6 +366,7 @@ public class Login_Activity extends AppCompatActivity implements FacebookCallbac
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("provider","facebook");
         jsonObject.put("provider_id",profileid);
+        jsonObject.put("role",3);
         Log.i("JSONBJ",jsonObject.toString());
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {

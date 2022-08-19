@@ -1,6 +1,7 @@
 package com.ezyedu.student;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -59,13 +60,13 @@ public class Course_one_new extends AppCompatActivity {
     private RequestQueue requestQueue;
     private List<course_seperate> mList = new ArrayList<>();
 
-
+    String language = null;
     int vendor_rating = 0;
 
     ProgressDialog progressDialog;
 
     //top icon
-    ImageView bookmark,share,chat,cart,back;
+    ImageView bookmark,share,chat,cart,back,bookmarked;
 
 
     //retrive base url
@@ -122,6 +123,11 @@ public class Course_one_new extends AppCompatActivity {
         Log.i("Session_main_activity",session_id);
 
 
+        SharedPreferences sharedPreferences1 = getApplicationContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+
+
 
         requestQueue = CourseVolleySingleton.getInstance(this).getRequestQueue();
 
@@ -132,7 +138,14 @@ public class Course_one_new extends AppCompatActivity {
 
         seperateCourseAdapter = new SeperateCourseAdapter(Course_one_new.this,mList);
         recyclerView.setAdapter(seperateCourseAdapter);
-        fetchArticles();
+        if (TextUtils.isEmpty(session_id))
+        {
+            fetchArticles();
+        }
+        else
+        {
+            fetchCourseWithSession();
+        }
 
         //top icons
 
@@ -142,41 +155,86 @@ public class Course_one_new extends AppCompatActivity {
         progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
 
         bookmark = findViewById(R.id.bookmark_img);
-        bookmark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                AlertDialog dig = new AlertDialog.Builder(Course_one_new.this).setTitle("Please Select").setMessage("Add to Bookmarks ?").
-                        setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                if (TextUtils.isEmpty(session_id))
-                                {
-                                    Toast.makeText(Course_one_new.this, "Please Login to Continue", Toast.LENGTH_SHORT).show();
-                                }
-                                else
-                                {
-                                    try {
-                                        progressDialog = new ProgressDialog(Course_one_new.this);
-                                        progressDialog.show();
-                                        progressDialog.setContentView(R.layout.progress_dialog);
-                                        progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
-                                        AddToBookMark();
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
+
+        if (language.equals("Indonesia"))
+        {
+            bookmark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog dig = new AlertDialog.Builder(Course_one_new.this).setTitle("Mohon dipilih").setMessage("Masukan ke Bookmarks?").
+                            setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    if (TextUtils.isEmpty(session_id))
+                                    {
+                                        Toast.makeText(Course_one_new.this, "Please Login to Continue", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
+                                        try {
+                                            progressDialog = new ProgressDialog(Course_one_new.this);
+                                            progressDialog.show();
+                                            progressDialog.setContentView(R.layout.progress_dialog);
+                                            progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+                                            AddToBookMark();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
                                     }
                                 }
-                            }
-                        }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                }).create();
-                dig.show();
-            }
-        });
+                            }).setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).create();
+                    dig.show();
+                }
+            });
+
+        }
+        else
+        {
+            bookmark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog dig = new AlertDialog.Builder(Course_one_new.this).setTitle("Please Select").setMessage("Add to Bookmarks ?").
+                            setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    if (TextUtils.isEmpty(session_id))
+                                    {
+                                        Toast.makeText(Course_one_new.this, "Please Login to Continue", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
+                                        try {
+                                            progressDialog = new ProgressDialog(Course_one_new.this);
+                                            progressDialog.show();
+                                            progressDialog.setContentView(R.layout.progress_dialog);
+                                            progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+                                            AddToBookMark();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }
+                            }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).create();
+                    dig.show();
+                }
+            });
+        }
+
 
         chat = findViewById(R.id.chat_sep);
         chat.setOnClickListener(new View.OnClickListener() {
@@ -271,11 +329,86 @@ public class Course_one_new extends AppCompatActivity {
             }
         });
 
-
+        bookmarked = findViewById(R.id.bk_mrk_ic);
+        bookmarked.setColorFilter(ContextCompat.getColor(this, R.color.orange));
+        bookmarked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog dig = new AlertDialog.Builder(Course_one_new.this).setTitle("Please Select").setMessage("Remove from Bookmarks ?").
+                        setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                if (TextUtils.isEmpty(session_id))
+                                {
+                                    Toast.makeText(Course_one_new.this, "Please Login to Continue", Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+                                    try {
+                                        progressDialog = new ProgressDialog(Course_one_new.this);
+                                        progressDialog.show();
+                                        progressDialog.setContentView(R.layout.progress_dialog);
+                                        progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+                                        Removefrombookmark();
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).create();
+                dig.show();
+            }
+        });
 
         //slider
         sliderView = findViewById(R.id.slider_view);
     }
+
+    private void Removefrombookmark() throws JSONException {
+        String url = base_app_url+"api/bookmark";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("item_type",0);
+        jsonObject.put("item_id",Hashid);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response)
+            {
+                if (response.has("message"))
+                {
+                    try {
+                        String message = response.getString("message");
+                        Toast.makeText(Course_one_new.this, message, Toast.LENGTH_SHORT).show();
+                        bookmarked.setVisibility(View.GONE);
+                        bookmark.setVisibility(View.VISIBLE);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                progressDialog.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/json");
+                params.put("Authorization",session_id);
+                return params;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+
 
     private void AddToCart() throws JSONException {
 
@@ -326,6 +459,8 @@ public class Course_one_new extends AppCompatActivity {
                     String message = response.getString("message");
                     Log.i("BookMarkMessage",message);
                     Toast.makeText(Course_one_new.this, message, Toast.LENGTH_SHORT).show();
+                    bookmark.setVisibility(View.GONE);
+                    bookmarked.setVisibility(View.VISIBLE);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -348,6 +483,124 @@ public class Course_one_new extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
+    private void fetchCourseWithSession()
+    {
+
+        String url = base_app_url+"api/courses/"+Hashid;
+        Log.i("url_new_sep",url);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response)
+            {
+                progressDialog.dismiss();
+                Log.i("ResponseSepCourse",response.toString());
+                try {
+                    JSONObject jsonObject1 = response.getJSONObject("data");
+
+                    int vendor_id = jsonObject1.getInt("vendor_id");
+                    String bk = jsonObject1.getString("bookmark");
+                    if (bk.equals("true"))
+                    {
+                        bookmarked.setVisibility(View.VISIBLE);
+                    }
+                    else if (bk.equals("false"))
+                    {
+                        bookmark.setVisibility(View.VISIBLE);
+                    }
+
+                    String category_label = jsonObject1.getString("category_label");
+                    String course_title = jsonObject1.getString("course_title");
+                    String course_description = jsonObject1.getString("course_description");
+
+                    String course_duration = jsonObject1.getString("course_duration");
+                    int initial_price = jsonObject1.getInt("initial_price");
+                    int discount_price = jsonObject1.getInt("discount_price");
+                    String start_date = jsonObject1.getString("start_date");
+                    String course_hash_id = jsonObject1.getString("course_hash_id");
+
+
+
+                    if(!jsonObject1.isNull("course_review"))
+                    {
+                        JSONObject j2 = jsonObject1.getJSONObject("course_review");
+                        course_rating = j2.getInt("total_rate");
+                        total_course_rating = j2.getInt("count");
+                        JSONArray jsonArray = j2.getJSONArray("user");
+
+                        for (int i = 0;i<jsonArray.length();i++)
+                        {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            username = jsonObject.getString("name");
+                            imag = jsonObject.getString("image");
+                            ratin = jsonObject.getInt("rate");
+                            review = jsonObject.getString("description");
+                        }
+                    }
+
+
+
+                    String vendor_logo = jsonObject1.getString("vendor_logo");
+                    String vendor_name = jsonObject1.getString("vendor_name");
+                    String vendor_address = jsonObject1.getString("vendor_address");
+
+
+                    if (jsonObject1.isNull("vendor_rating"))
+                    {
+                        vendor_rating = 0;
+                    }
+                    else
+                    {
+                        vendor_rating = jsonObject1.getInt("vendor_rating");
+                    }
+
+
+
+                    course_seperate post = new course_seperate(category_label,course_title,course_description,course_duration,initial_price,discount_price,start_date,course_hash_id
+                            ,vendor_logo,vendor_name,vendor_rating,vendor_address,vendor_id,course_rating,total_course_rating);
+
+                    mList.add(post);
+                    recyclerView.getAdapter().notifyDataSetChanged();
+
+
+
+                    JSONArray j1 = jsonObject1.getJSONArray("courses_image");
+                    for (int i = 0; i<j1.length();i++)
+                    {
+                        JSONObject jsonObject = j1.getJSONObject(i);
+                        String image = jsonObject.getString("image");
+                        SliderImages post1 = new SliderImages(image);
+                        sliderImagesList.add(post1);
+                    }
+                    sliderAdp = new SliderAdp(Course_one_new.this,sliderImagesList);
+                    sliderView.setSliderAdapter(sliderAdp);
+                    sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+                    sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
+                    sliderView.startAutoCycle();
+
+                } catch (JSONException e) {
+                    progressDialog.dismiss();
+                    e.printStackTrace();
+                    Log.i("errorMissing",e.toString());
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/json");
+                params.put("Authorization",session_id);
+                return params;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
     private void fetchArticles()
     {
         String url = base_app_url+"api/courses/"+Hashid;
@@ -363,6 +616,7 @@ public class Course_one_new extends AppCompatActivity {
                   JSONObject jsonObject1 = response.getJSONObject("data");
 
                   int vendor_id = jsonObject1.getInt("vendor_id");
+
                   String category_label = jsonObject1.getString("category_label");
                   String course_title = jsonObject1.getString("course_title");
                   String course_description = jsonObject1.getString("course_description");

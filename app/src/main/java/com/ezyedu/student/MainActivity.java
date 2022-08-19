@@ -52,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
     String Tag2 = "DEF";
     String session_id = null;
     public ImageView chatbtn,homebtn,exp_btnt,cart_btnt,others_btnt;
-    TextView txt1,wlcm;
+    TextView txt1;
     ImageButton chatListBtn;
+
+    String language = null;
 
 
 
@@ -114,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
     ShimmerFrameLayout s,s1,s2,s3;
 
 
+    TextView hom,ms,exp,crt,othrs;
+
     //retrive base url
     Globals sharedData = Globals.getInstance();
     String base_app_url;
@@ -130,11 +134,11 @@ public class MainActivity extends AppCompatActivity {
 
         //get domain url
         base_app_url = sharedData.getValue();
-        Log.i("domain_url",base_app_url);
+//        Log.i("domain_url",base_app_url);
 
         //get image loading url
         img_url_base = shareData1.getIValue();
-        Log.i("img_url_global",img_url_base);
+  //      Log.i("img_url_global",img_url_base);
 
 
         //session id for logged in users
@@ -142,6 +146,29 @@ public class MainActivity extends AppCompatActivity {
         session_id = sharedPreferences.getString("session_val","");
         Log.i("Session_main_activity",session_id);
 
+
+        hom = findViewById(R.id.home_txt);
+        ms = findViewById(R.id.ms_livia_text);
+        exp = findViewById(R.id.explore_txt);
+        crt = findViewById(R.id.Cart_text);
+        othrs = findViewById(R.id.Others_text);
+
+
+        txt1 = findViewById(R.id.search_txt);
+        //Language
+        SharedPreferences sharedPreferences1 = getApplicationContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+        if (language.equals("Indonesia"))
+        {
+            txt1.setText("Cari Kursus, Institusi, dan lainya");
+            hom.setText("Beranda");
+            ms.setText("Ms.Livia");
+            exp.setText("Explore");
+            crt.setText("Keranjang");
+            othrs.setText("Lainya");
+
+        }
 
         chatListBtn = findViewById(R.id.chat_list);
 
@@ -186,9 +213,9 @@ public class MainActivity extends AppCompatActivity {
         exp_btnt = findViewById(R.id.exp_btn);
         cart_btnt = findViewById(R.id.cart_btn);
         others_btnt = findViewById(R.id.others_btn);
-        wlcm = findViewById(R.id.welcome_text);
+     //   wlcm = findViewById(R.id.welcome_text);
 
-        txt1 = findViewById(R.id.search_txt);
+
 
         txt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -329,6 +356,19 @@ public class MainActivity extends AppCompatActivity {
                     if (jsonArray.length() >0) {
                         TextView textView = findViewById(R.id.inst_ttl);
                         textView.setVisibility(View.VISIBLE);
+                        if (language.equals("Indonesia"))
+                        {
+                            textView.setText("Institusi");
+                        }
+                        TextView textView2 = findViewById(R.id.view_all_insti);
+                        textView2.setVisibility(View.VISIBLE);
+                        textView2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent1 = new Intent(MainActivity.this,Institution_Groups.class);
+                                startActivity(intent1);
+                            }
+                        });
                         TextView textView1 = findViewById(R.id.inst_desc);
                       //  textView1.setVisibility(View.VISIBLE);
 
@@ -499,6 +539,12 @@ requestQueue.add(jsonObjPromoRequest);
                     if (jsonArray.length() >0) {
                         TextView textView = findViewById(R.id.art_ttl);
                         textView.setVisibility(View.VISIBLE);
+                        if (language.equals("Indonesia"))
+                        {
+                            textView.setText("Artikel");
+                        }
+                        TextView textView2 = findViewById(R.id.view_all_article);
+                        textView2.setVisibility(View.VISIBLE);
                         TextView textView1 = findViewById(R.id.art_desc);
                     //    textView1.setVisibility(View.VISIBLE);
 
@@ -530,7 +576,7 @@ requestQueue.add(jsonObjPromoRequest);
             public void onErrorResponse(VolleyError error) {
                 s3.stopShimmerAnimation();
                 s3.setVisibility(View.GONE);
-                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -590,9 +636,18 @@ requestQueue.add(jsonObjPromoRequest);
 
                     TextView textView = findViewById(R.id.sttr);
                     TextView textView1 = findViewById(R.id.crs_des);
+                    TextView textView2 = findViewById(R.id.view_all_course);
 
                     if (jsonArray.length()>0) {
                         textView.setVisibility(View.VISIBLE);
+                        textView2.setVisibility(View.VISIBLE);
+                        textView2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent1 = new Intent(MainActivity.this,Search_Course_Activity.class);
+                                startActivity(intent1);
+                            }
+                        });
                    //     textView1.setVisibility(View.VISIBLE);
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
@@ -750,7 +805,7 @@ requestQueue.add(jsonObjPromoRequest);
             {
                 s.stopShimmerAnimation();
                 s.setVisibility(View.GONE);
-                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

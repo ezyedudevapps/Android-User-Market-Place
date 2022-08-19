@@ -10,8 +10,8 @@ android {
         applicationId "com.ezyedu.student"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 29
-        versionName "4.5"
+        versionCode 30
+        versionName "4.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -89,5 +89,6 @@ dependencies {
 
     //shimmer effect
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+
 
 }

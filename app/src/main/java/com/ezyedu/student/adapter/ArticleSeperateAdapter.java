@@ -1,5 +1,6 @@
 package com.ezyedu.student.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
@@ -29,6 +31,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.bumptech.glide.Glide;
 import com.ezyedu.student.Cart_Activity;
 import com.ezyedu.student.Chat_List_Activity;
+import com.ezyedu.student.MainActivity;
 import com.ezyedu.student.R;
 import com.ezyedu.student.model.CourseVolleySingleton;
 import com.ezyedu.student.model.Globals;
@@ -46,7 +49,7 @@ import java.util.Map;
 public class ArticleSeperateAdapter extends RecyclerView.Adapter<ArticleSeperateAdapter.ArtSepHolder>
 {
 
-    private Context context;
+    Context context;
     private List<articesSeperate> articesSeperateList = new ArrayList<>();
     String session_id = null;
     RequestQueue requestQueue;
@@ -54,6 +57,10 @@ public class ArticleSeperateAdapter extends RecyclerView.Adapter<ArticleSeperate
     ProgressDialog progressDialog;
     public  static String img_url_base;
     public static  String base_app_url;
+
+    String share_article;
+
+    String language = null;
 
     public ArticleSeperateAdapter(Context context, List<articesSeperate> articesSeperateList) {
         this.context = context;
@@ -63,7 +70,7 @@ public class ArticleSeperateAdapter extends RecyclerView.Adapter<ArticleSeperate
     @NonNull
     @Override
     public ArtSepHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.seperate_article_adapter,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.article_seperate_adapter,parent,false);
         return new ArtSepHolder(view);
     }
 
@@ -78,16 +85,40 @@ public class ArticleSeperateAdapter extends RecyclerView.Adapter<ArticleSeperate
 
 
         holder.header.setText(articesSeperate.getHeading());
-        holder.author.setText("Author : "+articesSeperate.getAuthor());
+        holder.author.setText(articesSeperate.getAuthor());
 
         holder.type.setText(articesSeperate.getType());
-        holder.bookmark.setOnClickListener(new View.OnClickListener() {
+
+
+        share_article = base_app_url+"api/blog/"+articesSeperate.getHash_id();
+        holder.share.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("QueryPermissionsNeeded")
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent();
+                intent1.setAction(Intent.ACTION_SEND);
+                intent1.putExtra(Intent.EXTRA_TEXT,share_article);
+                intent1.setType("text/plain");
+                context.startActivity(intent1);
+            }
+        });
+        String book = articesSeperate.getBookmark();
+        Log.i("booook",book);
+       if (book.equals("true"))
+        {
+            holder.bookmarked.setVisibility(View.VISIBLE);
+        }
+        else if (book.equals("false"))
+        {
+            holder.bookmark.setVisibility(View.VISIBLE);
+        }
+
+
+        holder.bookmarked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-
-                AlertDialog dig = new AlertDialog.Builder(context).setTitle("Please Select").setMessage("Add to Bookmarks ?").
+                AlertDialog dig = new AlertDialog.Builder(context).setTitle("Please Select").setMessage("Remove from Bookmarks ?").
                         setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -108,7 +139,9 @@ public class ArticleSeperateAdapter extends RecyclerView.Adapter<ArticleSeperate
                                     }
                                     else {
                                         try {
-                                            addBookmark(articesSeperate.getHash_id());
+                                            RemoveBookMark(articesSeperate.getHash_id());
+                                            holder.bookmarked.setVisibility(View.GONE);
+                                            holder.bookmark.setVisibility(View.VISIBLE);
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }
@@ -125,10 +158,111 @@ public class ArticleSeperateAdapter extends RecyclerView.Adapter<ArticleSeperate
 
 
 
-
             }
         });
 
+        holder.bookmarked.setColorFilter(ContextCompat.getColor(context, R.color.orange));
+
+        if (language.equals("Indonesia"))
+        {
+            holder.bookmark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+
+                    AlertDialog dig = new AlertDialog.Builder(context).setTitle("Mohon dipilih").setMessage("Masukan ke Bookmarks?").
+                            setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    if (TextUtils.isEmpty(session_id))
+                                    {
+                                        Toast.makeText(context, "Please Login to Continue", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
+                                        progressDialog = new ProgressDialog(context);
+                                        progressDialog.show();
+                                        progressDialog.setContentView(R.layout.progress_dialog);
+                                        progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+                                        if (TextUtils.isEmpty(session_id))
+                                        {
+                                            Toast.makeText(context, "Please Login to continue", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else {
+                                            try {
+                                                addBookmark(articesSeperate.getHash_id());
+                                                holder.bookmark.setVisibility(View.GONE);
+                                                holder.bookmarked.setVisibility(View.VISIBLE);
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }
+                                }
+                            }).setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).create();
+                    dig.show();
+
+                }
+            });
+        }
+        else
+        {
+            holder.bookmark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+
+                    AlertDialog dig = new AlertDialog.Builder(context).setTitle("Please Select").setMessage("Add to Bookmarks ?").
+                            setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    if (TextUtils.isEmpty(session_id))
+                                    {
+                                        Toast.makeText(context, "Please Login to Continue", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
+                                        progressDialog = new ProgressDialog(context);
+                                        progressDialog.show();
+                                        progressDialog.setContentView(R.layout.progress_dialog);
+                                        progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+                                        if (TextUtils.isEmpty(session_id))
+                                        {
+                                            Toast.makeText(context, "Please Login to continue", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else {
+                                            try {
+                                                addBookmark(articesSeperate.getHash_id());
+                                                holder.bookmark.setVisibility(View.GONE);
+                                                holder.bookmarked.setVisibility(View.VISIBLE);
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }
+                                }
+                            }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).create();
+                    dig.show();
+                }
+            });
+        }
+
+
+        holder.type.setText(articesSeperate.getLabel());
 
         holder.cart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +282,13 @@ public class ArticleSeperateAdapter extends RecyclerView.Adapter<ArticleSeperate
             holder.description.setText(Html.fromHtml(articesSeperate.getDescription()));
         }
 
+        holder.back_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(context, MainActivity.class);
+                context.startActivity(intent1);
+            }
+        });
         holder.chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,7 +313,45 @@ public class ArticleSeperateAdapter extends RecyclerView.Adapter<ArticleSeperate
 
         String [] date = date_all.split(" ");
         String date_new = date[0];
-        holder.date.setText("Published On : "+date_new);
+        holder.date.setText(date_new);
+    }
+
+    private void RemoveBookMark(String hash_id) throws JSONException {
+
+        RequestQueue requestQueue = CourseVolleySingleton.getInstance(context).getRequestQueue();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("item_type",2);
+        jsonObject.put("item_id",hash_id);
+        String url = base_app_url+"api/bookmark";
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    progressDialog.dismiss();
+                    String message = response.getString("message");
+                    Log.i("BookMarkMessage",message);
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    progressDialog.dismiss();
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/json");
+                params.put("Authorization",session_id);
+                return params;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
     }
 
     private void addBookmark(String hash_id) throws JSONException {
@@ -217,8 +396,8 @@ public class ArticleSeperateAdapter extends RecyclerView.Adapter<ArticleSeperate
         return articesSeperateList == null ?0: articesSeperateList.size();
     }
 
-    public static class ArtSepHolder extends RecyclerView.ViewHolder {
-        ImageView imageView,bookmark,share,chat,cart;
+    public  class ArtSepHolder extends RecyclerView.ViewHolder {
+        ImageView imageView,bookmark,share,chat,cart,bookmarked,back_arrow;
         TextView type,header,author,date,description;
 
 
@@ -235,9 +414,11 @@ public class ArticleSeperateAdapter extends RecyclerView.Adapter<ArticleSeperate
             super(itemView);
 
             bookmark = itemView.findViewById(R.id.bookmark_img);
+            bookmarked = itemView.findViewById(R.id.bookmarked_img);
             chat = itemView.findViewById(R.id.chat_sep);
             share = itemView.findViewById(R.id.share_img);
             cart = itemView.findViewById(R.id.cart_img);
+            back_arrow = itemView.findViewById(R.id.bk_arrow);
 
 
             imageView = itemView.findViewById(R.id.article_image);
@@ -255,6 +436,10 @@ public class ArticleSeperateAdapter extends RecyclerView.Adapter<ArticleSeperate
             img_url_base = shareData1.getIValue();
             Log.i("img_url_global",img_url_base);
 
+
+            SharedPreferences sharedPreferences1 = context.getApplicationContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+            language = sharedPreferences1.getString("Language_select","");
+            Log.i("Language_main_activity",language);
 
         }
     }

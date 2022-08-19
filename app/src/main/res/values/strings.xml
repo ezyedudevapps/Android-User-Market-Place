@@ -406,6 +406,7 @@ or choose another card</string>
     <string name="facebook_app_id">708592230515693</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">56789</string>
+    <string name="number">Number</string>
 
 
 </resources>

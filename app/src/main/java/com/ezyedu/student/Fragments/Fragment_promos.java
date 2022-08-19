@@ -2,8 +2,11 @@ package com.ezyedu.student.Fragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,6 +60,19 @@ public class Fragment_promos extends Fragment {
     //get img global url
     ImageGlobals shareData1 = ImageGlobals.getInstance();
     String img_url_base;
+    String language = null;
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences1 = getContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+
+        if (language.equals("Indonesia"))
+        {
+            textView.setText("Tidak Ada Promosi Yang Ditemukan");
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,6 +95,8 @@ public class Fragment_promos extends Fragment {
 
         textView = view.findViewById(R.id.t11);
         imageView = view.findViewById(R.id.i11);
+
+
 
         recyclerView = view.findViewById(R.id.promo_fragment);
         fragmentPromotionAdapter = new FragmentPromotionAdapter(getContext(),fplist);

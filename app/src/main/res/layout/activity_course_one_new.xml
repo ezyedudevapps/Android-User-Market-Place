@@ -4,27 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_ezy"
     tools:context=".Course_one_new">
 
 
     <RelativeLayout
         android:id="@+id/rel_11"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="60dp"
         android:background="@color/ezy"
         >
         <ImageView
             android:id="@+id/sc_back"
             android:layout_width="30dp"
             android:layout_height="45dp"
-            android:layout_marginStart="7sp"
+            android:layout_marginStart="15sp"
+            android:layout_centerVertical="true"
             android:src="@drawable/ic_left_arrow_white"
             />
 
         <ImageView
             android:id="@+id/cart_img"
             android:layout_width="40dp"
-            android:layout_height="20dp"
+            android:layout_height="23dp"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_cart_white"
@@ -32,25 +34,38 @@
         <ImageView
             android:id="@+id/share_img"
             android:layout_width="40dp"
-            android:layout_height="20dp"
+            android:layout_height="23dp"
             android:src="@drawable/ic_share_white"
             android:layout_toLeftOf="@+id/cart_img"
             android:layout_centerVertical="true"
             />
+
+
+
+        <ImageView
+            android:id="@+id/bk_mrk_ic"
+            android:layout_width="40dp"
+            android:layout_height="26dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_bookmark_2"
+            android:layout_toLeftOf="@id/chat_sep"
+            android:visibility="gone"
+            />
         <ImageView
             android:id="@+id/bookmark_img"
             android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:layout_toLeftOf="@+id/share_img"
+            android:layout_height="23dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_bookmark_white"
+            android:layout_toLeftOf="@id/chat_sep"
+            android:visibility="gone"
+            android:src="@drawable/ic_bookmark_border_white_24dp"
             />
         <ImageView
             android:id="@+id/chat_sep"
             android:layout_width="40dp"
-            android:layout_height="20dp"
+            android:layout_height="23dp"
+            android:layout_toLeftOf="@+id/share_img"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/bookmark_img"
             android:src="@drawable/ic_vendor_chat"
             />
 
@@ -106,7 +121,9 @@
                 android:orientation="vertical"
                 android:layout_marginBottom="15sp"
                 android:layout_below="@id/slider_view"
-                android:layout_marginTop="20sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginStart="10sp"
+                android:layout_marginEnd="15sp"
                 />
 
 

@@ -1,15 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.NearMeMarkerFragment">
 
-    <fragment
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/google_map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:elevation="10dp"
+        android:layout_marginTop="50sp"
+        android:layout_marginBottom="50sp"
+        android:layout_marginStart="25sp"
+        android:layout_marginEnd="25sp"
+        >
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/google_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            />
+
+        <ImageView
+            android:id="@+id/drag_mark"
+            android:layout_width="70dp"
+            android:layout_height="90dp"
+            android:src="@drawable/orange_marker"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="15sp"
+            android:layout_marginBottom="25sp"
+            android:padding="8dp"
+            />
+
+        <Button
+            android:id="@+id/search_ven_map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:textColor="@color/com_facebook_blue"
+            android:text="Search Vendor"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/white_oval"
+            />
+
+    </RelativeLayout>
+
+
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sv_location"
+        android:queryHint="Search...."
+        android:iconifiedByDefault="false"
+        android:layout_margin="10dp"
+        android:elevation="5dp"
+        android:background="@drawable/white_oval"
+        android:visibility="gone"
         />
 
-</FrameLayout>
+
+
+
+    <ImageView
+        android:id="@+id/my_loc_icon"
+        android:layout_width="70dp"
+        android:layout_height="90dp"
+        android:src="@drawable/my_location_new"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="15sp"
+        android:layout_marginBottom="25sp"
+        android:padding="8dp"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>

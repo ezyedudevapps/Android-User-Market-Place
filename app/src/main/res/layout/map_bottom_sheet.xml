@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_new_oval"
+    xmlns:tools="http://schemas.android.com/tools">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="170dp"
+       android:background="@drawable/white_new_oval"
+       >
+
+       <TextView
+           android:id="@+id/text_head"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Vendor Details"
+           android:textAlignment="center"
+           android:textColor="@color/black"
+           android:padding="8dp"
+           android:textSize="17sp"
+           android:textStyle="bold"
+           android:visibility="gone"
+           />
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:id="@+id/map_ven_logo"
+           android:layout_width="60dp"
+           android:layout_height="70dp"
+           android:layout_margin="17sp"
+           android:layout_below="@+id/text_head"
+           />
+       <TextView
+           android:id="@+id/map_ven_ttl"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_toRightOf="@id/map_ven_logo"
+           android:maxLines="1"
+           android:textSize="17sp"
+           android:layout_below="@+id/text_head"
+           android:layout_marginTop="15sp"
+           android:layout_marginEnd="15sp"
+           android:textColor="@color/black"
+           />
+       <TextView
+           android:id="@+id/map_ven_cat"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_toRightOf="@id/map_ven_logo"
+           android:layout_below="@+id/map_ven_ttl"
+           android:maxLines="1"
+           android:paddingLeft="6dp"
+           android:paddingRight="6dp"
+           android:background="@color/green_100"
+           android:textSize="14sp"
+           android:textAlignment="center"
+           android:layout_marginTop="5sp"
+           android:layout_marginEnd="15sp"
+           android:textColor="@color/green"
+           />
+       <ImageView
+           android:id="@+id/str_fl"
+           android:layout_width="17dp"
+           android:layout_height="25dp"
+           android:layout_below="@+id/map_ven_cat"
+           android:layout_toRightOf="@id/map_ven_logo"
+           android:src="@drawable/star_full"
+           android:layout_margin="5sp"
+           />
+       <TextView
+           android:id="@+id/new_rateing"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/map_ven_cat"
+           android:layout_toRightOf="@id/str_fl"
+           android:layout_marginTop="6sp"
+           android:textSize="17sp"
+           android:textColor="@color/black"
+           />
+
+      <Button
+          android:id="@+id/button_cntinue"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/map_ven_logo"
+          android:layout_marginStart="15sp"
+          android:layout_marginEnd="15sp"
+          android:layout_marginBottom="15sp"
+          android:background="@color/orange"
+          android:text="continue"
+          android:textStyle="bold"
+          android:textColor="@color/white"
+          />
+
+   </RelativeLayout>
+
+</RelativeLayout>

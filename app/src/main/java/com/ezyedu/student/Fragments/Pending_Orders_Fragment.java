@@ -20,12 +20,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.ezyedu.student.Search_Course_Activity;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.ezyedu.student.CourseActivity;
 import com.ezyedu.student.R;
@@ -64,12 +66,22 @@ public class Pending_Orders_Fragment extends Fragment {
     ImageGlobals shareData1 = ImageGlobals.getInstance();
     String img_url_base;
 
+    String language = null;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         sharedPreferences = getContext().getSharedPreferences("Session_id", Context.MODE_PRIVATE);
         session_id = sharedPreferences.getString("session_val","");
         Log.i("Session_Histry_activity",session_id);
+
+        SharedPreferences sharedPreferences1 = getContext().getSharedPreferences("Language", Context.MODE_PRIVATE);
+        language = sharedPreferences1.getString("Language_select","");
+        Log.i("Language_main_activity",language);
+        if (language.equals("Indonesia"))
+        {
+            t1.setText("Tidak ada Order Pending");
+            b1.setText("Cari Kursus");
+        }
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -99,7 +111,7 @@ public class Pending_Orders_Fragment extends Fragment {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(getContext(), CourseActivity.class);
+                Intent intent1 = new Intent(getContext(), Search_Course_Activity.class);
                 startActivity(intent1);
             }
         });
@@ -189,7 +201,21 @@ public class Pending_Orders_Fragment extends Fragment {
             {
                 shimmerFrameLayout.stopShimmerAnimation();
                 shimmerFrameLayout.setVisibility(View.GONE);
-                Log.i("ErrorPendingOrders",error.toString());
+
+                Log.i("pendingerror",error.toString());
+                NetworkResponse networkResponse = error.networkResponse;
+                if (networkResponse != null && networkResponse.data != null) {
+                    String jsonError = new String(networkResponse.data);
+                    Log.i("LoginFail", jsonError.toString());
+                    try {
+                        JSONObject jsonObject1= new JSONObject(jsonError);
+                        JSONObject jsonObject2 = jsonObject1.getJSONObject("errors");
+                        Log.i("message",jsonObject2.toString());
+                        //  Toast.makeText(Login_Activity.this, jsonObject2.toString(), Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }){
             @Override

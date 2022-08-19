@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_ezy"
     tools:context=".Fragments.Fragment_promos">
 
     <!-- TODO: Update blank fragment layout -->
@@ -30,7 +31,7 @@
         android:visibility="gone"
         android:gravity="center"
         android:textColor="@color/black"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginTop="244dp"
         android:layout_gravity="center_horizontal"
