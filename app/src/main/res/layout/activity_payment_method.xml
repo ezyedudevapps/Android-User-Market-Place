@@ -52,7 +52,7 @@
                 android:id="@+id/cc_img"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:src="@drawable/credit_card"
+                android:src="@drawable/ic_cc"
                 />
                 <TextView
                     android:layout_width="match_parent"
@@ -88,18 +88,18 @@
                 android:id="@+id/cc_img1"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:src="@drawable/credit_card"
+                android:src="@drawable/ic_cc_installment"
                 />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/cc_img1"
-                android:text="Credit Card Instalmet"
-                android:layout_marginStart="10sp"
                 android:layout_centerVertical="true"
-                android:textStyle="bold"
+                android:layout_marginStart="10sp"
+                android:layout_toRightOf="@+id/cc_img1"
+                android:text="Credit Card Installment"
                 android:textSize="18sp"
-                />
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="20sp"
